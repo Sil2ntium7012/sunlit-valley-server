@@ -88,9 +88,9 @@ function secondsToClean(now) {
   return period - (nowSec % period);
 }
 
-function tell(server, component) {
+function tell(srv, component) {
   try {
-    server.tell(component);
+    srv.tell(component);
   } catch (err) {
     /* 무시 */
   }
@@ -139,13 +139,13 @@ ServerEvents.tick((event) => {
   if (disabled) return;
 
   try {
-    const server = event.server;
+    const srv = event.server;
     const now = new Date();
     const sec = now.getSeconds();
     if (sec === lastSecond) return; // 1초에 한 번만
     lastSecond = sec;
 
-    const players = server.players;
+    const players = srv.players;
     const online = players.length;
     const cleanIn = secondsToClean(now);
     const restartIn = secondsToRestart(now);
@@ -154,7 +154,7 @@ ServerEvents.tick((event) => {
     if (stopCountdown >= 0) {
       if (stopCountdown === 0) {
         stopCountdown = -1;
-        server.runCommandSilent("stop");
+        srv.runCommandSilent("stop");
       } else {
         stopCountdown--;
       }
@@ -165,10 +165,10 @@ ServerEvents.tick((event) => {
 
     // ── 청소 ──
     if (cleanIn === CLEAN_EVERY_MIN * 60) {
-      server.runCommandSilent(CLEAN_COMMAND);
+      srv.runCommandSilent(CLEAN_COMMAND);
       if (online > 0) {
         tell(
-          server,
+          srv,
           Text.of(PREFIX).append(Text.of("바닥에 떨어진 아이템을 정리했습니다.").green())
         );
       }
@@ -177,7 +177,7 @@ ServerEvents.tick((event) => {
         actionBar(players, Text.of("청소까지 " + cleanIn + "초").red().bold());
       }
       tell(
-        server,
+        srv,
         Text.of(PREFIX).append(
           Text.of(
             humanTime(cleanIn) + " 후 바닥 아이템을 청소합니다. 주울 건 미리 챙기세요!"
@@ -189,19 +189,19 @@ ServerEvents.tick((event) => {
     // ── 재부팅 ──
     if (restartIn === 0) {
       tell(
-        server,
+        srv,
         Text.of(PREFIX).append(
           Text.of("서버를 재시작합니다. 잠시 후 다시 들어와 주세요!").red().bold()
         )
       );
-      server.runCommandSilent("save-all");
+      srv.runCommandSilent("save-all");
       stopCountdown = STOP_DELAY_SEC;
     } else if (online > 0 && RESTART_WARN_AT.indexOf(restartIn) !== -1) {
       if (restartIn <= 5) {
         actionBar(players, Text.of("재부팅까지 " + restartIn + "초").red().bold());
       }
       tell(
-        server,
+        srv,
         Text.of(PREFIX).append(
           Text.of(humanTime(restartIn) + " 후 서버가 재시작됩니다.").gold()
         )
