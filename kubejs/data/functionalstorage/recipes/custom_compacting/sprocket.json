@@ -1,0 +1,11 @@
+{
+  "type": "functionalstorage:custom_compacting",
+  "higher_input": {
+    "count": 1,
+    "item": "numismatics:sprocket"
+  },
+  "lower_input": {
+    "count": 2,
+    "item": "numismatics:bevel"
+  }
+}

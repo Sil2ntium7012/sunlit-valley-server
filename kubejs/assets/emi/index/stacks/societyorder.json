@@ -1,0 +1,64 @@
+{
+  "added": [
+    {
+      "stack": "item:numismatics:spur",
+      "after": "item:minecraft:oak_log"
+    },
+    {
+      "stack": "item:numismatics:bevel",
+      "after": "item:numismatics:spur"
+    },
+    {
+      "stack": "item:numismatics:sprocket",
+      "after": "item:numismatics:bevel"
+    },
+    {
+      "stack": "item:numismatics:cog",
+      "after": "item:numismatics:sprocket"
+    },
+    {
+      "stack": "item:numismatics:crown",
+      "after": "item:numismatics:cog"
+    },
+    {
+      "stack": "item:numismatics:sun",
+      "after": "item:numismatics:crown"
+    },
+        {
+      "stack": "item:numismatics:neptunium_coin",
+      "after": "item:numismatics:sun"
+    },
+    {
+      "stack": "item:numismatics:ancient_coin",
+      "after": "item:numismatics:neptunium_coin"
+    },
+    {
+      "stack": "item:numismatics:prismatic_coin",
+      "after": "item:numismatics:ancient_coin"
+    },
+    {
+      "stack": "item:croptania:cropnolia",
+      "after": "item:botania:floating_manastar"
+    },
+    {
+      "stack": "item:croptania:floating_cropnolia",
+      "after": "item:croptania:cropnolia"
+    },
+    {
+      "stack": "item:etcetera:bismuth_nugget",
+      "after": "item:etcetera:raw_bismuth"
+    }
+  ],
+  "removed": [
+    "item:numismatics:spur",
+    "item:numismatics:bevel",
+    "item:numismatics:sprocket",
+    "item:numismatics:cog",
+    "item:numismatics:crown",
+    "item:numismatics:sun",
+    "item:numismatics:neptunium_coin",
+    "item:numismatics:ancient_coin",
+    "item:numismatics:prismatic_coin",
+    "item:etcetera:bismuth_nugget"
+  ]
+}

@@ -1,0 +1,65 @@
+# ─────────────────────────────────────────────
+#  Sunlit Valley 서버 - Git 추적 제외 목록
+#  설정 파일만 공유하고, 월드/모드/런타임은 각자 보관
+# ─────────────────────────────────────────────
+
+# 월드 데이터 (절대 올리지 않음 - 충돌 시 월드 손상)
+world/
+world_nether/
+world_the_end/
+backups/
+
+# 모드 jar 및 런타임 (서버팩으로 각자 확보)
+mods/
+libraries/
+versions/
+*.jar
+*.jar.log
+
+# 서버 시작 스크립트 (git이 실행 중에 덮어쓰면 안 되므로 제외)
+start-server.bat
+
+# ServerStarterJar / Forge 가 자동 생성하는 것들
+run.bat
+run.sh
+run.ps1
+user_jvm_args.txt
+rhino.local.properties
+installer.log
+.serverstarter/
+
+# 첫 실행 때 자동 생성되는 폴더들
+configureddefaults/
+journeymap/
+easy_npc/
+modernfix/
+quests_structures/
+moonlight-global-datapacks/
+local/
+.mixin.out/
+.cache/
+debug/
+
+# 서버가 스스로 관리하는 파일 (양쪽에서 달라지면 충돌남)
+eula.txt
+ops.json
+whitelist.json
+usercache.json
+usernamecache.json
+banned-players.json
+banned-ips.json
+logs/
+crash-reports/
+
+# 자바 자동 설치본
+.jabba/
+jdk/
+
+# 로그 / 임시
+*.log
+*.log.gz
+
+# OS 잡파일
+Thumbs.db
+desktop.ini
+.DS_Store

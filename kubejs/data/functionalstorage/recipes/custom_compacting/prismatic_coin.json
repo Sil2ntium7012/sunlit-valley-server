@@ -1,0 +1,11 @@
+{
+  "type": "functionalstorage:custom_compacting",
+  "higher_input": {
+    "count": 1,
+    "item": "numismatics:prismatic_coin"
+  },
+  "lower_input": {
+    "count": 64,
+    "item": "numismatics:ancient_coin"
+  }
+}
