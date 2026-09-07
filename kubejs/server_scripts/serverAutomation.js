@@ -49,13 +49,13 @@ function pad2(n) {
 // 남은 초 -> "1시간 23분" / "5분 30초" / "12초"
 function humanTime(sec) {
   if (sec >= 3600) {
-    const h = Math.floor(sec / 3600);
-    const m = Math.floor((sec % 3600) / 60);
+    var h = Math.floor(sec / 3600);
+    var m = Math.floor((sec % 3600) / 60);
     return m > 0 ? h + "시간 " + m + "분" : h + "시간";
   }
   if (sec >= 60) {
-    const m = Math.floor(sec / 60);
-    const s = sec % 60;
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
     return s > 0 ? m + "분 " + s + "초" : m + "분";
   }
   return sec + "초";
@@ -63,18 +63,18 @@ function humanTime(sec) {
 
 // 탭 목록용 고정폭 표기
 function clockTime(sec) {
-  const h = Math.floor(sec / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = sec % 60;
+  var h = Math.floor(sec / 3600);
+  var m = Math.floor((sec % 3600) / 60);
+  var s = sec % 60;
   return h > 0 ? h + ":" + pad2(m) + ":" + pad2(s) : pad2(m) + ":" + pad2(s);
 }
 
 // 다음 재부팅까지 남은 초 (정확히 그 시각이면 0)
 function secondsToRestart(now) {
-  const nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  let best = 86400;
-  for (let i = 0; i < RESTART_HOURS.length; i++) {
-    let diff = RESTART_HOURS[i] * 3600 - nowSec;
+  var nowSec = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+  var best = 86400;
+  for (var i = 0; i < RESTART_HOURS.length; i++) {
+    var diff = RESTART_HOURS[i] * 3600 - nowSec;
     if (diff < 0) diff += 86400;
     if (diff < best) best = diff;
   }
@@ -83,8 +83,8 @@ function secondsToRestart(now) {
 
 // 다음 청소까지 남은 초 (정확히 그 시각이면 주기값 = 방금 경계를 지났다는 뜻)
 function secondsToClean(now) {
-  const period = CLEAN_EVERY_MIN * 60;
-  const nowSec = now.getMinutes() * 60 + now.getSeconds();
+  var period = CLEAN_EVERY_MIN * 60;
+  var nowSec = now.getMinutes() * 60 + now.getSeconds();
   return period - (nowSec % period);
 }
 
@@ -97,7 +97,7 @@ function tell(srv, component) {
 }
 
 function actionBar(players, component) {
-  for (let i = 0; i < players.length; i++) {
+  for (var i = 0; i < players.length; i++) {
     try {
       players[i].setStatusMessage(component);
     } catch (err) {
@@ -109,12 +109,12 @@ function actionBar(players, component) {
 function updateTabList(players, cleanIn, restartIn) {
   if (tabListOff || $TabListPacket === null) return;
 
-  const header = Text.of("")
+  var header = Text.of("")
     .append(Text.of("하이의 놀이터").gold().bold())
     .append(Text.of("\n"))
     .append(Text.of("접속 " + players.length + "명").gray());
 
-  const footer = Text.of("")
+  var footer = Text.of("")
     .append(Text.of("\n"))
     .append(Text.of("청소까지 ").gray())
     .append(Text.of(clockTime(cleanIn)).aqua())
@@ -123,8 +123,8 @@ function updateTabList(players, cleanIn, restartIn) {
     .append(Text.of(clockTime(restartIn)).yellow());
 
   try {
-    const packet = new $TabListPacket(header, footer);
-    for (let i = 0; i < players.length; i++) {
+    var packet = new $TabListPacket(header, footer);
+    for (var i = 0; i < players.length; i++) {
       players[i].connection.send(packet);
     }
   } catch (err) {
@@ -135,20 +135,20 @@ function updateTabList(players, cleanIn, restartIn) {
   }
 }
 
-ServerEvents.tick((event) => {
+ServerEvents.tick(function (event) {
   if (disabled) return;
 
   try {
-    const srv = event.server;
-    const now = new Date();
-    const sec = now.getSeconds();
+    var srv = event.server;
+    var now = new Date();
+    var sec = now.getSeconds();
     if (sec === lastSecond) return; // 1초에 한 번만
     lastSecond = sec;
 
-    const players = srv.players;
-    const online = players.length;
-    const cleanIn = secondsToClean(now);
-    const restartIn = secondsToRestart(now);
+    var players = srv.players;
+    var online = players.length;
+    var cleanIn = secondsToClean(now);
+    var restartIn = secondsToRestart(now);
 
     // ── 재부팅 카운트다운이 걸려 있으면 그것부터 ──
     if (stopCountdown >= 0) {
