@@ -212,6 +212,30 @@
     },
     {
       "offer": {
+        "item": "minecraft:stone",
+        "count": 4
+      },
+      "request": {
+        "item": "numismatics:sprocket",
+        "count": 2
+      },
+      "numismatics_cost": 32,
+      "trade_id": "carpenter_stone"
+    },
+    {
+      "offer": {
+        "item": "minecraft:quartz_block",
+        "count": 4
+      },
+      "request": {
+        "item": "numismatics:sprocket",
+        "count": 2
+      },
+      "numismatics_cost": 32,
+      "trade_id": "carpenter_quartz_block"
+    },
+    {
+      "offer": {
         "item": "minecraft:cobbled_deepslate",
         "count": 8
       },
@@ -731,30 +755,6 @@
       },
       "numismatics_cost": 50,
       "trade_id": "carpenter_white_wool"
-    },
-    {
-      "offer": {
-        "item": "minecraft:smooth_stone",
-        "count": 1
-      },
-      "request": {
-        "item": "numismatics:spur",
-        "count": 50
-      },
-      "numismatics_cost": 50,
-      "trade_id": "carpenter_smooth_stone"
-    },
-    {
-      "offer": {
-        "item": "minecraft:quartz_block",
-        "count": 1
-      },
-      "request": {
-        "item": "numismatics:spur",
-        "count": 50
-      },
-      "numismatics_cost": 50,
-      "trade_id": "carpenter_quartz_block"
     }
   ],
   "random_sets": [

@@ -1,0 +1,52 @@
+{
+  "shop_id": "hi_shop",
+  "name": "§6하이의 놀이터 상점",
+  "texture": "dialog:textures/portraits/carpenter",
+  "entity": "minecraft:villager",
+  "entity_data": "hi_shop",
+  "hidden_from_selector": true,
+  "hidden_from_auto_trader": true,
+  "selector_weight": -200,
+  "jei_catalyst": {
+    "item": "minecraft:villager_spawn_egg"
+  },
+  "trades": [
+    {
+      "offer": {
+        "item": "minecraft:stone",
+        "count": 16
+      },
+      "request": {
+        "item": "numismatics:sprocket",
+        "count": 4
+      },
+      "numismatics_cost": 64,
+      "trade_id": "hi_shop_stone_bulk"
+    },
+    {
+      "offer": {
+        "item": "minecraft:oak_log",
+        "count": 16
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "hi_shop_oak_log_bulk"
+    },
+    {
+      "offer": {
+        "item": "minecraft:iron_ingot",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 1
+      },
+      "numismatics_cost": 512,
+      "limit": 16,
+      "trade_id": "hi_shop_iron_bulk"
+    }
+  ]
+}
