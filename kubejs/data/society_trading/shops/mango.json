@@ -2,7 +2,7 @@
   "shop_id": "mango",
   "name": "§a망고",
   "texture": "dialog:textures/portraits/carpenter",
-  "entity": "minecraft:villager",
+  "entity": "easy_npc:humanoid_slim",
   "entity_data": "mango_shop",
   "hidden_from_selector": true,
   "hidden_from_auto_trader": true,

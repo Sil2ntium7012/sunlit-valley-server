@@ -2,7 +2,7 @@
   "shop_id": "hi_shop",
   "name": "§6하이의 놀이터",
   "texture": "dialog:textures/portraits/market",
-  "entity": "minecraft:villager",
+  "entity": "easy_npc:humanoid",
   "entity_data": "hi_shop",
   "hidden_from_selector": true,
   "hidden_from_auto_trader": true,
@@ -15,7 +15,7 @@
       "offer": {
         "item": "supplementaries:present_black",
         "count": 1,
-        "nbt": "{display:{Name:'{\"text\":\"칭호 뽑기 상자\",\"italic\":false,\"color\":\"light_purple\"}'}}"
+        "nbt": "{hiGacha:\"title\",display:{Name:'{\"text\": \"칭호 뽑기 상자\", \"italic\": false, \"color\": \"light_purple\", \"bold\": true}',Lore:['{\"text\": \"우클릭하면 칭호를 뽑습니다\", \"italic\": false, \"color\": \"gray\"}','{\"text\": \"여러 개를 한 번에 열려면 바닥에 버리세요\", \"italic\": false, \"color\": \"gray\"}','{\"text\": \"칭호 10%  /  꽝 90%\", \"italic\": false, \"color\": \"dark_gray\"}']}}"
       },
       "request": {
         "item": "numismatics:ancient_coin",
@@ -32,7 +32,7 @@
       "offer": {
         "item": "supplementaries:present_yellow",
         "count": 1,
-        "nbt": "{display:{Name:'{\"text\":\"발광 뽑기 상자\",\"italic\":false,\"color\":\"yellow\"}'}}"
+        "nbt": "{hiGacha:\"glow\",display:{Name:'{\"text\": \"발광 뽑기 상자\", \"italic\": false, \"color\": \"yellow\", \"bold\": true}',Lore:['{\"text\": \"우클릭하면 발광 염료를 뽑습니다\", \"italic\": false, \"color\": \"gray\"}','{\"text\": \"여러 개를 한 번에 열려면 바닥에 버리세요\", \"italic\": false, \"color\": \"gray\"}','{\"text\": \"발광 2%  /  무지개 0.1%\", \"italic\": false, \"color\": \"dark_gray\"}']}}"
       },
       "request": {
         "item": "numismatics:ancient_coin",
