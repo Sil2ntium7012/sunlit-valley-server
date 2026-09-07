@@ -2,7 +2,9 @@
   "shop_id": "guild",
   "name": "shop.society_trading.guild",
   "texture": "create:textures/block/industrial_iron_block",
-  "jei_catalyst": { "item": "minecraft:leather_boots" },
+  "jei_catalyst": {
+    "item": "minecraft:leather_boots"
+  },
   "selector_weight": 1,
   "trades": [
     {
@@ -232,6 +234,18 @@
       "stage_required": "vault_complete",
       "trade_id": "guild_teleporter",
       "unlock_description": "jei.society_trading.vault_complete"
+    },
+    {
+      "offer": {
+        "item": "toolbelt:belt",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sun",
+        "count": 3
+      },
+      "numismatics_cost": 12288,
+      "trade_id": "guild_tool_belt"
     }
   ]
 }

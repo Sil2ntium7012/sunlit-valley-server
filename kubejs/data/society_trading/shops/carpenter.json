@@ -225,13 +225,13 @@
     {
       "offer": {
         "item": "minecraft:quartz_block",
-        "count": 4
+        "count": 1
       },
       "request": {
-        "item": "numismatics:sprocket",
-        "count": 2
+        "item": "numismatics:spur",
+        "count": 50
       },
-      "numismatics_cost": 32,
+      "numismatics_cost": 50,
       "trade_id": "carpenter_quartz_block"
     },
     {

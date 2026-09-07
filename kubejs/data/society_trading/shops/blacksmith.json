@@ -84,6 +84,18 @@
     },
     {
       "offer": {
+        "item": "minecraft:lapis_lazuli",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sprocket",
+        "count": 2
+      },
+      "numismatics_cost": 32,
+      "trade_id": "blacksmith_lapis_lazuli_for_sprocket"
+    },
+    {
+      "offer": {
         "item": "minecraft:flint_and_steel",
         "count": 1
       },
@@ -141,6 +153,54 @@
       },
       "numismatics_cost": 49556,
       "trade_id": "blacksmith_netherite_upgrade_smithing_template_for_crown"
+    },
+    {
+      "offer": {
+        "item": "minecraft:iron_pickaxe",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 1
+      },
+      "numismatics_cost": 512,
+      "trade_id": "blacksmith_iron_pickaxe"
+    },
+    {
+      "offer": {
+        "item": "minecraft:golden_pickaxe",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 9
+      },
+      "numismatics_cost": 4608,
+      "trade_id": "blacksmith_golden_pickaxe"
+    },
+    {
+      "offer": {
+        "item": "minecraft:diamond_pickaxe",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 25
+      },
+      "numismatics_cost": 12800,
+      "trade_id": "blacksmith_diamond_pickaxe"
+    },
+    {
+      "offer": {
+        "item": "minecraft:netherite_pickaxe",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sun",
+        "count": 16
+      },
+      "numismatics_cost": 66356,
+      "trade_id": "blacksmith_netherite_pickaxe"
     },
     {
       "offer": {

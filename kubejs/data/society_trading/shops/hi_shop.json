@@ -1,7 +1,7 @@
 {
   "shop_id": "hi_shop",
-  "name": "§6하이의 놀이터 상점",
-  "texture": "dialog:textures/portraits/carpenter",
+  "name": "§6하이의 놀이터",
+  "texture": "dialog:textures/portraits/market",
   "entity": "minecraft:villager",
   "entity_data": "hi_shop",
   "hidden_from_selector": true,
@@ -13,40 +13,37 @@
   "trades": [
     {
       "offer": {
-        "item": "minecraft:stone",
-        "count": 16
+        "item": "supplementaries:present_black",
+        "count": 1,
+        "nbt": "{display:{Name:'{\"text\":\"칭호 뽑기 상자\",\"italic\":false,\"color\":\"light_purple\"}'}}"
       },
       "request": {
-        "item": "numismatics:sprocket",
-        "count": 4
-      },
-      "numismatics_cost": 64,
-      "trade_id": "hi_shop_stone_bulk"
-    },
-    {
-      "offer": {
-        "item": "minecraft:oak_log",
-        "count": 16
-      },
-      "request": {
-        "item": "numismatics:cog",
-        "count": 2
-      },
-      "numismatics_cost": 128,
-      "trade_id": "hi_shop_oak_log_bulk"
-    },
-    {
-      "offer": {
-        "item": "minecraft:iron_ingot",
-        "count": 8
-      },
-      "request": {
-        "item": "numismatics:crown",
+        "item": "numismatics:ancient_coin",
         "count": 1
       },
-      "numismatics_cost": 512,
-      "limit": 16,
-      "trade_id": "hi_shop_iron_bulk"
+      "second_request": {
+        "item": "numismatics:sun",
+        "count": 11
+      },
+      "numismatics_cost": 307200,
+      "trade_id": "hi_shop_title_gacha"
+    },
+    {
+      "offer": {
+        "item": "supplementaries:present_yellow",
+        "count": 1,
+        "nbt": "{display:{Name:'{\"text\":\"발광 뽑기 상자\",\"italic\":false,\"color\":\"yellow\"}'}}"
+      },
+      "request": {
+        "item": "numismatics:ancient_coin",
+        "count": 4
+      },
+      "second_request": {
+        "item": "numismatics:sun",
+        "count": 44
+      },
+      "numismatics_cost": 1228800,
+      "trade_id": "hi_shop_glow_gacha"
     }
   ]
 }

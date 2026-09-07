@@ -1,0 +1,70 @@
+{
+  "shop_id": "mango",
+  "name": "§a망고",
+  "texture": "dialog:textures/portraits/carpenter",
+  "entity": "minecraft:villager",
+  "entity_data": "mango_shop",
+  "hidden_from_selector": true,
+  "hidden_from_auto_trader": true,
+  "selector_weight": -199,
+  "jei_catalyst": {
+    "item": "minecraft:villager_spawn_egg"
+  },
+  "trades": [
+    {
+      "offer": {
+        "item": "pipez:item_pipe",
+        "count": 8
+      },
+      "request": {
+        "item": "oreganized:lead_ingot",
+        "count": 1
+      },
+      "trade_id": "mango_item_pipe"
+    },
+    {
+      "offer": {
+        "item": "pipez:advanced_upgrade",
+        "count": 1
+      },
+      "request": {
+        "item": "minecraft:diamond_block",
+        "count": 1
+      },
+      "trade_id": "mango_advanced_upgrade"
+    },
+    {
+      "offer": {
+        "item": "relics:relic_experience_bottle",
+        "count": 1
+      },
+      "request": {
+        "item": "society:furniture_box",
+        "count": 1
+      },
+      "trade_id": "mango_relic_experience_bottle"
+    },
+    {
+      "offer": {
+        "item": "society:relic_trove",
+        "count": 1
+      },
+      "request": {
+        "item": "pamhc2trees:starfruititem",
+        "count": 64
+      },
+      "trade_id": "mango_relic_trove"
+    },
+    {
+      "offer": {
+        "item": "society:artifact_trove",
+        "count": 1
+      },
+      "request": {
+        "item": "minecraft:shulker_shell",
+        "count": 1
+      },
+      "trade_id": "mango_artifact_trove"
+    }
+  ]
+}
