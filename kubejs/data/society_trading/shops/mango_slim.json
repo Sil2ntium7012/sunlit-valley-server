@@ -1,10 +1,10 @@
 {
-  "shop_id": "mango",
+  "shop_id": "mango_slim",
   "name": "§a망고",
   "texture": "dialog:textures/portraits/carpenter",
-  "entity": "easy_npc:humanoid",
+  "entity": "easy_npc:humanoid_slim",
   "entity_data": "mango_shop",
-  "hidden_from_selector": false,
+  "hidden_from_selector": true,
   "hidden_from_auto_trader": true,
   "selector_weight": 901,
   "jei_catalyst": {
@@ -20,7 +20,7 @@
         "item": "oreganized:lead_ingot",
         "count": 1
       },
-      "trade_id": "mango_item_pipe"
+      "trade_id": "mango_item_pipe_slim"
     },
     {
       "offer": {
@@ -31,7 +31,7 @@
         "item": "minecraft:diamond_block",
         "count": 1
       },
-      "trade_id": "mango_advanced_upgrade"
+      "trade_id": "mango_advanced_upgrade_slim"
     },
     {
       "offer": {
@@ -42,7 +42,7 @@
         "item": "society:furniture_box",
         "count": 1
       },
-      "trade_id": "mango_relic_experience_bottle"
+      "trade_id": "mango_relic_experience_bottle_slim"
     },
     {
       "offer": {
@@ -53,7 +53,7 @@
         "item": "pamhc2trees:starfruititem",
         "count": 64
       },
-      "trade_id": "mango_relic_trove"
+      "trade_id": "mango_relic_trove_slim"
     },
     {
       "offer": {
@@ -64,7 +64,7 @@
         "item": "minecraft:shulker_shell",
         "count": 1
       },
-      "trade_id": "mango_artifact_trove"
+      "trade_id": "mango_artifact_trove_slim"
     }
   ]
 }

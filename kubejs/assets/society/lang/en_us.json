@@ -62,7 +62,6 @@
   "effect.relics.vanishing.description": "Grants invisibility and slightly increases movement speed.",
   "effect.relics.anti_heal.description": "Prevents health regeneration and healing.",
   "effect.relics.bleeding.description": "Inflicts lethal percent damage over time.",
-
   "effect.vinery.experience_effect.description": "Amplifies experience acquisition.",
   "effect.vinery.trippy.description": "Applies a random visual effect to the target's view.",
   "effect.vinery.jellie.description": "Bestows potent blessings and heightened restorative properties.",
@@ -80,7 +79,6 @@
   "effect.vinery.health_effect.description": "Increases max health.",
   "effect.vinery.resistance_effect.description": "Increases armor toughness and knockback resistance.",
   "effect.vinery.armor_effect.description": "Increases armor toughness and armor level.",
-
   "effect.vinery.improved_absorbtion.description": "Grants damage resistance and absorption.",
   "effect.vinery.improved_strength.description": "Increases attack speed and damage.",
   "effect.vinery.improved_instant_health.description": "Grants regeneration and instant healing.",
@@ -88,7 +86,6 @@
   "effect.vinery.improved_fire_resistance.description": "Grants fire resistance and absorption.",
   "effect.vinery.improved_water_breathing.description": "Grants water breathing and increases swimming speed.",
   "effect.vinery.improved_night_vision.description": "Grants invisibility.",
-
   "item.oreganized.lead_sheet": "Lead Sheet",
   "item.oreganized.silver_sheet": "Silver Sheet",
   "item.herbalbrews.water_cup": "Water Cup",
@@ -110,7 +107,6 @@
   "item.crabbersdelight.crab_trap_bait": "Crab Trap Bait",
   "item.crabbersdelight.deluxe_crab_trap_bait": "Deluxe Crab Trap Bait",
   "item.crabbersdelight.mana_crab_trap_bait": "Mana Crab Trap Bait",
-
   "block.herbalbrews.coffee_beans_sack": "Coffee Beans Sack",
   "block.herbalbrews.yerba_mate_leaf_block": "Yerba Mate Leaf Block",
   "block.herbalbrews.rooibos_leaf_block": "Rooibos Leaf Block",
@@ -118,7 +114,6 @@
   "block.moreminecarts.greenhouse_glass_slab": "Greenhouse Glass Slab",
   "block.whimsy_deco.statue_endless_fortune": "Statue Endless Fortune",
   "block.whimsy_deco.sunlit_singing_frog": "Sunlit Singing Frog",
-
   "item.vinery.apple_juice_bucket": "Apple Juice Bucket",
   "item.vinery.white_grape_juice_bucket": "White Grape Juice Bucket",
   "item.vinery.white_jungle_grape_juice_bucket": "White Jungle Grape Juice Bucket",
@@ -131,7 +126,6 @@
   "item.nethervinery.crimson_grape_juice_bucket": "Crimson Grape Juice Bucket",
   "item.nethervinery.warped_grape_juice_bucket": "Warped Grape Juice Bucket",
   "item.relics.relic_experience_bucket": "Relic Experience Bucket",
-
   "fluid.vinery.apple_juice": "Apple Juice",
   "fluid.vinery.white_grape_juice": "White Grape Juice",
   "fluid.vinery.white_jungle_grape_juice": "White Jungle Grape Juice",
@@ -156,14 +150,12 @@
   "fluid.society.mana_fruit_juice": "Mana Fruit Juice",
   "fluid.society.mystic_syrup": "Mystic Syrup",
   "fluid.society.mystic_jelly": "Mystic Jelly",
-
   "tag.item.society.sellable": "Sellable",
   "tag.item.society.farmer_product": "Farmer Product",
   "tag.item.society.artisan_product": "Artisan Product",
   "tag.item.society.geologist_product": "Geologist Product",
   "tag.item.society.adventurer_product": "Adventurer Product",
   "tag.item.society.villager_gift": "Villager Gift",
-
   "society.advancement.obtain_crystalarium.description": "Craft an Crystalarium to grow gems and minerals... Somehow.",
   "society.advancement.obtain_crystalarium.title": "Schedule C",
   "society.advancement.obtain_charging_rod.description": "Craft a Charging Rod to make Batteries from thunderstorms.",
@@ -198,7 +190,6 @@
   "society.advancement.obtain_oil_maker.title": "Never touch the Cornballer",
   "society.advancement.obtain_mushroom_log.description": "Craft a Mushroom Log to cultivate Mushrooms.",
   "society.advancement.obtain_mushroom_log.title": "Magic Mushrooms",
-
   "society.advancement.obtain_prismatic_shard.description": "Find a Prismatic Shard in the Skull Cavern or a max level skill.",
   "society.advancement.obtain_prismatic_shard.title": "Prismatic",
   "society.advancement.obtain_jade.description": "Venture into the Skull Cavern and obtain Jade, the final tier of common crafting material.",
@@ -215,7 +206,6 @@
   "society.advancement.obtain_gnome.title": "Nitbe Gifte",
   "society.advancement.obtain_token_of_unity.description": "Find the Token of Unity.",
   "society.advancement.obtain_token_of_unity.title": "Behold, my artifacts",
-
   "society.advancement.obtain_prismatic_coin.description": "Obtain your first Prismatic Coin. How will you spend it?",
   "society.advancement.obtain_prismatic_coin.title": "Capitalist Realism",
   "society.advancement.obtain_ancient_coin.description": "Obtain your first Ancient Coin. Don't lose it...",
@@ -226,7 +216,6 @@
   "society.advancement.obtain_sun.title": "Seed Money",
   "society.advancement.root.description": "Start your farm, lay claim to riches.",
   "society.advancement.root.title": "Society: Sunlit Valley",
-
   "biome.society.cavern_top": "Skull Cavern Surface",
   "biome.society.skull_caves": ":pick: Skull Caves",
   "biome.society.lush_caverns": ":pick: Lush Caverns",
@@ -236,19 +225,14 @@
   "biome.society.desert_fault": ":pick: Desert Fault",
   "biome.society.blackstone_caves": ":pick: Blackstone Caves",
   "biome.society.umbra_barrens": ":pick: Umbra Barrens",
-
   "affix.society.famine": "Famine",
   "affix.society.partystarter": "Partystarter",
   "affix.society.slime_pinata": "Slime Pinata",
-
-  "society.fancymenu.open_wiki":"Sunlit Valley Wiki",
-  "society.fancymenu.open_wiki.hover":"Work in progress & open to contributions!",
-  "society.fancymenu.credits":"Credits",
-
+  "society.fancymenu.open_wiki": "Sunlit Valley Wiki",
+  "society.fancymenu.open_wiki.hover": "Work in progress & open to contributions!",
+  "society.fancymenu.credits": "Credits",
   "quark.jei.hint.preambl": "Forever Young - ",
-
   "key.keyboard.shift": "Shift",
-
   "command.society.pig_race.no_active": "No Pigracing in progress! Purchase a Multiplayer ticket from a Banker!",
   "command.society.pig_race.invalid_pig": "You can only bet on these colors: red, blue, yellow, or green",
   "command.society.pig_race.no_bet": "Place Gold Coins or higher in your offhand to bet",
@@ -263,7 +247,6 @@
   "command.society.debt.remove": "Removed %s §f●§r from %s's debt. Remaining: %s §f●§r",
   "command.society.debt.invalid_amount_positive": "Amount must be > 0.",
   "command.society.debt.invalid_amount_non_negative": "Amount must be >= 0.",
-
   "society.pig_race.red_pig": "Red",
   "society.pig_race.blue_pig": "Blue",
   "society.pig_race.yellow_pig": "Yellow",
@@ -354,7 +337,7 @@
   "society.husbandry.mood.breed_impact": "Mood Debuffs multiplied by %sx due to breed",
   "society.husbandry.mood.not_pet": "-96 - Too long since last pet",
   "society.husbandry.mood.not_fed": "-128 - Too long since last fed",
-  "society.husbandry.mood.not_cold":"-%s - Winter animal needs more cold blocks nearby",
+  "society.husbandry.mood.not_cold": "-%s - Winter animal needs more cold blocks nearby",
   "society.husbandry.mood.too_cold": "-32 - Left outside during winter",
   "society.husbandry.mood.cramped": "-96 - More than 5 animals in close proximity",
   "society.husbandry.mood.wet": "-32 - Outside in the rain",
@@ -466,7 +449,6 @@
   "society.invitation.place_home": "Place down the Villager Home block to decide where this villager lives! It can be moved at any time.",
   "society.item_frame.rod": "I need to remove my bobber before placing this here...",
   "society.new_villager.message": "Someone new wants to move into your town! Check the Carpenter's invitation shop to invite them.",
-
   "jei.society.category.seed_making": "Seed Making",
   "jei.society.category.preserving": "Preserving",
   "jei.society.category.wine_making": "Wine Making",
@@ -518,14 +500,13 @@
   "jei.society.husbandry.pool.select": " %s%% chance to be selected",
   "jei.society.tea_drying": "Place block and wait...",
   "jade.society.working_block_entity.progress": "Progress: %s/%s ",
-  "jade.society.crop_growth":"Growth: %s/%s Days",
-  "jade.society.crop_growth.mature":"Mature",
-  "jade.society.crop_growth.stop":"Cannot grow",
-  "jade.society.crop_growth.need_stem":"Requires Grapevine Stem",
-  "jade.society.crop_growth.need_lattice":"Requires Grapevine Lattice",
-  "jade.society.crop_growth.need_farmland":"Requires Farmland",
-  "jade.society.crop_growth.need_watered_farmland":"Requires Farmland underwater",
-
+  "jade.society.crop_growth": "Growth: %s/%s Days",
+  "jade.society.crop_growth.mature": "Mature",
+  "jade.society.crop_growth.stop": "Cannot grow",
+  "jade.society.crop_growth.need_stem": "Requires Grapevine Stem",
+  "jade.society.crop_growth.need_lattice": "Requires Grapevine Lattice",
+  "jade.society.crop_growth.need_farmland": "Requires Farmland",
+  "jade.society.crop_growth.need_watered_farmland": "Requires Farmland underwater",
   "tooltip.society.coins": "§f●§r %s",
   "tooltip.society.stack_value": "Stack value",
   "tooltip.society.multipliers": " + multipliers",
@@ -648,7 +629,6 @@
   "tooltip.society.cleavers": "Scavenges cooking ingredients from monster",
   "tooltip.society.invitation": "Invites a villager to your town and unlocks their shop on the Phone.",
   "tooltip.society.ripper_tooth": "Threatens the fish in a Fish Pond into changing their active quest.",
-  
   "block.society.aging_cask.description": "Ages a product over a long period of time",
   "block.society.ancient_cask.description": "Ages already aged goods at an extremely slow rate",
   "block.society.ancient_cask.description.warn": "Only usable if Ancient Aging skill unlocked",
@@ -752,7 +732,6 @@
   "block.society.villager_home.description": "Transports the villager to your town and assigns them the nearby area as their home.\n Cannot be placed near other villagers.",
   "block.society.fish_pond_manager.description": "Submits quests for fish ponds at 7am every morning",
   "block.society.caterpillar_box.description": "Hatches Caterpillar Eggs placed inside every 5 minutes. Butterflies and Moths fly out of the box's top.",
-
   "item.society.froggy_helm.description": "There's a large tongue nestled inside",
   "item.society.ribbit_drum.description": "Nitwit Ribbits love to bang on this",
   "item.society.ribbit_gadget.description": "Some sort of wetware circuit",
@@ -910,14 +889,13 @@
   "item.society.caterpillar_eggs.longwing.type": "Type: %s",
   "item.society.caterpillar_eggs.longwing.parents": "Parents: %s & %s",
   "item.society.caterpillar_eggs.longwing.size": "Max size: %s",
-
   "society.item.plushie.trait.description": "When housing an animal using a Sunlit Crystal:",
   "society.item.plushie.aquatic": "Aquatic",
   "society.item.plushie.aquatic.description": "Chance to forage a River or Ocean jelly when harvesting\n§65%% chance per quality level",
   "society.item.plushie.woodsy": "Woodsy",
   "society.item.plushie.woodsy.description": "Forages logs from nearby trees every harvest\n§68 per quality level [Area: 5x5x5]",
   "society.item.plushie.eldritch": "Eldritch",
-  "society.item.plushie.eldritch.description": "Forages raw silver every harvest\n§61 per quality level",
+  "society.item.plushie.eldritch.description": "Forages raw silver every harvest\n§61 per 2 quality levels",
   "society.item.plushie.wrathful": "Wrathful",
   "society.item.plushie.wrathful.description": "Forages raw lead every harvest\n§63 per quality level",
   "society.item.plushie.sommelier": "Sommelier",
@@ -927,13 +905,13 @@
   "society.item.plushie.hungry": "Hungry",
   "society.item.plushie.hungry.description": "Chance for an additional harvest\n§610%% chance per quality level",
   "society.item.plushie.anxious": "Anxious",
-  "society.item.plushie.anxious.description": "Increases probability of chance-based drops\n§6Additional 25%% chance per quality level",
+  "society.item.plushie.anxious.description": "Increases probability of chance-based drops\n§6Additional 15%% chance per quality level",
   "society.item.plushie.shy": "Shy",
   "society.item.plushie.shy.description": "Produces double if no other plushies are in an area around it\n§6Area starts as 7x7x7 and decreases by 2 per quality level",
   "society.item.plushie.cheerful": "Cheerful",
-  "society.item.plushie.cheerful.description": "Produces double if lots of plushies are around it\n§6Plushies required starts at 24 and decreases by 4 per quality level[Area: 5x5x5]",
+  "society.item.plushie.cheerful.description": "Produces double if lots of plushies are around it\n§6Plushies required starts at 32 and decreases by 4 per quality level[Area: 5x5x5]",
   "society.item.plushie.machiavellian": "Machiavellian",
-  "society.item.plushie.machiavellian.description": "Forages Iridium Scrap every harvest\n§61 per quality level",
+  "society.item.plushie.machiavellian.description": "Forages Iridium Scrap every harvest\n§61 per 2 quality levels",
   "society.item.plushie.cutesy": "Cutesy",
   "society.item.plushie.cutesy.description": "Forages furniture boxes every harvest\n§61 per quality level",
   "society.item.plushie.fashionista": "Fashionista",
@@ -941,8 +919,7 @@
   "society.item.plushie.neutral": "Neutral",
   "society.item.plushie.neutral.description": "Chance to double output on harvest\n§610%% chance per quality level",
   "society.item.plushie.chill": "Chill",
-  "society.item.plushie.chill.description": "Forages Pristine Diamonds every harvest\n§61 per quality level",
-
+  "society.item.plushie.chill.description": "Forages Diamonds every harvest\n§61 per quality level",
   "society.trofers.pantry": "Pantry Trophy",
   "society.trofers.vault": "Vault Trophy",
   "society.trofers.boiler_room": "Boiler Room Trophy",
@@ -965,7 +942,6 @@
   "society.trofers.autumn_mayhem": "Building Contest Trophy - Autumn Mayhem",
   "society.trofers.community_center": "Building Contest Trophy - The Heart of the Community",
   "society.trofers.train_station": "Building Contest Trophy - Medieval Train Station",
-
   "info.society.villager_unlock_condition.carpenter": "Craft the capenter invitation using simple resources",
   "info.society.villager_unlock_condition.shepherd": "Invite the carpenter villager to unlock invitation",
   "info.society.villager_unlock_condition.market": "Invite the carpenter villager to unlock invitation",

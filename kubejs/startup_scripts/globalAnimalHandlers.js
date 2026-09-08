@@ -546,7 +546,7 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
       break;
     case 2:
       // Eldritch
-      newDrops.push(Item.of(`${qualityMult}x oreganized:raw_silver`));
+      newDrops.push(Item.of(`${Math.ceil(qualityMult / 2)}x oreganized:raw_silver`));
       break;
     case 3:
       // Wrathful
@@ -568,7 +568,7 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
       break;
     case 7:
       // Anxious
-      probabilityIncrease = 0.25 * qualityMult;
+      probabilityIncrease = 0.15 * qualityMult;
       break;
     case 8:
       // Shy
@@ -592,18 +592,18 @@ global.getPlushieModifiers = (level, data, plushieBlock) => {
           plushieBlock,
           2
         ) >
-        28 - 4 * qualityMult
+        36 - 4 * qualityMult
       ) {
         doubleDrops = true;
       }
       break;
     case 10:
       // Chill
-      newDrops.push(Item.of(`${qualityMult}x society:pristine_diamond`));
+      newDrops.push(Item.of(`${qualityMult}x minecraft:diamond`));
       break;
     case 11:
       // Machiavellian
-      newDrops.push(Item.of(`${qualityMult}x minecraft:netherite_scrap`));
+      newDrops.push(Item.of(`${Math.ceil(qualityMult / 2)}x minecraft:netherite_scrap`));
       break;
     case 12:
       // Cutesy

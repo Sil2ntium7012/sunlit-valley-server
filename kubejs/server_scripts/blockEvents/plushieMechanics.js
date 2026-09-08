@@ -93,8 +93,8 @@ BlockEvents.rightClicked("whimsy_deco:gatcha_machine", (e) => {
   const { item, player, block, hand, server } = e;
   if (hand == "OFF_HAND") return;
   if (hand == "MAIN_HAND") {
-    if (item.id.equals("numismatics:sun")) {
-      item.count -= 1;
+    if (item.id.equals("numismatics:sun") && item.count >= 2) {
+      item.count -= 2;
       block.popItemFromFace(
         "society:plushie_capsule",
         block.properties.get("facing")

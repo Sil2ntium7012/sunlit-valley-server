@@ -62,7 +62,6 @@
   "effect.relics.vanishing.description": "투명화를 부여하고 이동 속도를 약간 증가시킵니다.",
   "effect.relics.anti_heal.description": "체력 재생 및 치유를 방지합니다.",
   "effect.relics.bleeding.description": "사망할 수 있는 체력 비례 피해를 지속적으로 입힙니다.",
-
   "effect.vinery.experience_effect.description": "경험치 획득량이 증폭됩니다.",
   "effect.vinery.trippy.description": "대상에게 무작위 시각 효과를 적용합니다.",
   "effect.vinery.jellie.description": "강력한 축복과 강화된 회복 속성을 부여합니다.",
@@ -80,7 +79,6 @@
   "effect.vinery.health_effect.description": "최대 생명력이 증가합니다.",
   "effect.vinery.resistance_effect.description": "방어 강도와 밀치기 저항을 증가시킵니다.",
   "effect.vinery.armor_effect.description": "방어 강도와 방어력을 증가시킵니다.",
-
   "effect.vinery.improved_absorbtion.description": "피해 저항 및 흡수를 부여합니다.",
   "effect.vinery.improved_strength.description": "공격 속도와 피해가 증가합니다.",
   "effect.vinery.improved_instant_health.description": "재생 및 즉시 치유를 부여합니다.",
@@ -88,7 +86,6 @@
   "effect.vinery.improved_fire_resistance.description": "화염 저항 및 흡수를 부여합니다.",
   "effect.vinery.improved_water_breathing.description": "수중 호흡을 부여하고 수영 속도가 증가합니다.",
   "effect.vinery.improved_night_vision.description": "야간 투시와 투명화를 부여합니다.",
-
   "item.oreganized.lead_sheet": "납 판",
   "item.oreganized.silver_sheet": "은 판",
   "item.herbalbrews.water_cup": "물 컵",
@@ -110,7 +107,6 @@
   "item.crabbersdelight.crab_trap_bait": "게잡이 통발 미끼",
   "item.crabbersdelight.deluxe_crab_trap_bait": "디럭스 게잡이 통발 미끼",
   "item.crabbersdelight.mana_crab_trap_bait": "마나 게잡이 통발 미끼",
-
   "block.herbalbrews.coffee_beans_sack": "커피콩 자루",
   "block.herbalbrews.yerba_mate_leaf_block": "예르바 마테 잎 블록",
   "block.herbalbrews.rooibos_leaf_block": "루이보스 잎 블록",
@@ -118,7 +114,6 @@
   "block.moreminecarts.greenhouse_glass_slab": "온실 유리 반 블록",
   "block.whimsy_deco.statue_endless_fortune": "끝없는 행운의 조각상",
   "block.whimsy_deco.sunlit_singing_frog": "선릿 노래하는 개구리",
-
   "item.vinery.apple_juice_bucket": "사과 주스 양동이",
   "item.vinery.white_grape_juice_bucket": "백포도 주스 양동이",
   "item.vinery.white_jungle_grape_juice_bucket": "정글 백포도 주스 양동이",
@@ -131,7 +126,6 @@
   "item.nethervinery.crimson_grape_juice_bucket": "진홍빛 포도 주스 양동이",
   "item.nethervinery.warped_grape_juice_bucket": "뒤틀린 포도 주스 양동이",
   "item.relics.relic_experience_bucket": "렐릭 경험치 양동이",
-
   "fluid.vinery.apple_juice": "사과 주스",
   "fluid.vinery.white_grape_juice": "백포도 주스",
   "fluid.vinery.white_jungle_grape_juice": "정글 백포도 주스",
@@ -156,14 +150,12 @@
   "fluid.society.mana_fruit_juice": "마나 열매 주스",
   "fluid.society.mystic_syrup": "신비한 시럽",
   "fluid.society.mystic_jelly": "신비한 젤리",
-
   "tag.item.society.sellable": "판매가능",
   "tag.item.society.farmer_product": "농부생산품",
   "tag.item.society.artisan_product": "장인생산품",
   "tag.item.society.geologist_product": "지질학자생산품",
   "tag.item.society.adventurer_product": "탐험가생산품",
   "tag.item.society.villager_gift": "주민선물",
-
   "society.advancement.obtain_crystalarium.description": "알 수 없는 방법으로 보석과 광물을 성장시키는 결정생성기를 제작하세요.",
   "society.advancement.obtain_crystalarium.title": "스케줄 C",
   "society.advancement.obtain_charging_rod.description": "번개에서 배터리를 충전할 수 있는 피뢰침을 제작하세요.",
@@ -198,7 +190,6 @@
   "society.advancement.obtain_oil_maker.title": "화상주의",
   "society.advancement.obtain_mushroom_log.description": "버섯을 기를 수 있는 버섯 통나무를 만드세요.",
   "society.advancement.obtain_mushroom_log.title": "버섯 축제",
-
   "society.advancement.obtain_prismatic_shard.description": "해골 동굴 또는 스킬 트리를 통해 무지갯빛 파편을 찾으세요.",
   "society.advancement.obtain_prismatic_shard.title": "무지갯빛으로 빛나는 보석",
   "society.advancement.obtain_jade.description": "해골 동굴로 모험을 떠나 일반 제작 재료의 최종 단계인 비취를 획득하세요.",
@@ -215,7 +206,6 @@
   "society.advancement.obtain_gnome.title": "호호호",
   "society.advancement.obtain_token_of_unity.description": "통합의 징표를 찾으세요.",
   "society.advancement.obtain_token_of_unity.title": "보아라, 아티팩트의 정점을",
-
   "society.advancement.obtain_prismatic_coin.description": "첫 무지갯빛 코인을 획득하세요. 이 돈을 어디에 쓰시겠습니까?",
   "society.advancement.obtain_prismatic_coin.title": "자본주의",
   "society.advancement.obtain_ancient_coin.description": "첫 고대 코인을 획득하세요. 잃어버리지 마세요...",
@@ -226,7 +216,6 @@
   "society.advancement.obtain_sun.title": "종잣돈",
   "society.advancement.root.description": "농장을 일으키고 부를 손에 넣으세요.",
   "society.advancement.root.title": "Society: Sunlit Valley",
-
   "biome.society.cavern_top": "해골 동굴 지상",
   "biome.society.skull_caves": ":pick: 해골 동굴",
   "biome.society.lush_caverns": ":pick: 무성한 동굴",
@@ -236,19 +225,14 @@
   "biome.society.desert_fault": ":pick: 사막 단층",
   "biome.society.blackstone_caves": ":pick: 흑암 동굴",
   "biome.society.umbra_barrens": ":pick: 그림자 불모지",
-
   "affix.society.famine": "기근",
   "affix.society.partystarter": "파티스타터",
   "affix.society.slime_pinata": "슬라임 피냐타",
-
-  "society.fancymenu.open_wiki":"Sunlit Valley 위키",
-  "society.fancymenu.open_wiki.hover":"작업 중 & 여러분의 기여가 필요합니다!",
-  "society.fancymenu.credits":"크레딧",
-
+  "society.fancymenu.open_wiki": "Sunlit Valley 위키",
+  "society.fancymenu.open_wiki.hover": "작업 중 & 여러분의 기여가 필요합니다!",
+  "society.fancymenu.credits": "크레딧",
   "quark.jei.hint.preambl": "",
-
   "key.keyboard.shift": "시프트",
-
   "command.society.pig_race.no_active": "개최 중인 돼지 경주가 없습니다! 은행원에게서 멀티플레이용 티켓을 구매하세요!",
   "command.society.pig_race.invalid_pig": "red, blue, yellow, green 돼지에게만 베팅할 수 있습니다!",
   "command.society.pig_race.no_bet": "반대 손에 금 코인 이상의 코인을 들고 베팅하세요",
@@ -263,7 +247,6 @@
   "command.society.debt.remove": "%2$s의 빚에서 §f●§r %1$s 제거했습니다. 총액: §f●§r %3$s",
   "command.society.debt.invalid_amount_positive": "설정할 값은 1 이상이어야 합니다.",
   "command.society.debt.invalid_amount_non_negative": "설정할 값은 0 이상이어야 합니다.",
-
   "society.pig_race.red_pig": "빨간 리본",
   "society.pig_race.blue_pig": "파란 리본",
   "society.pig_race.yellow_pig": "노란 리본",
@@ -354,7 +337,7 @@
   "society.husbandry.mood.breed_impact": "종에 의한 디버프 %s배",
   "society.husbandry.mood.not_pet": "-96 - 쓰다듬은지 너무 오래됨",
   "society.husbandry.mood.not_fed": "-128 - 먹이를 먹지 못한지 너무 오래됨",
-  "society.husbandry.mood.not_cold":"-%s - 한대 기후 동물들은 주변에 차가운 블록이 필요함",
+  "society.husbandry.mood.not_cold": "-%s - 한대 기후 동물들은 주변에 차가운 블록이 필요함",
   "society.husbandry.mood.too_cold": "-32 - 겨울에 밖에 있었음",
   "society.husbandry.mood.cramped": "-96 - 5마리 이상의 동물이 밀집함",
   "society.husbandry.mood.wet": "-32 - 밖에서 비를 맞음",
@@ -466,7 +449,6 @@
   "society.invitation.place_home": "주민을 배치하고 싶은 장소에 주민 거주지 블록을 설치하세요! 거주지는 언제든지 옮길 수 있습니다.",
   "society.item_frame.rod": "낚싯대를 걸기 전에 찌를 제거하는게 좋겠어...",
   "society.new_villager.message": "새로운 주민이 마을에 오고싶어 하는 것 같습니다! 목수에게서 초대 목록을 확인해보세요.",
-
   "jei.society.category.seed_making": "씨앗 생성",
   "jei.society.category.preserving": "절이기",
   "jei.society.category.wine_making": "와인 양조",
@@ -518,14 +500,13 @@
   "jei.society.husbandry.pool.select": " %s%% 확률로 선택",
   "jei.society.tea_drying": "블록을 설치하고 기다리기...",
   "jade.society.working_block_entity.progress": "진행도: %s/%s ",
-  "jade.society.crop_growth":"성장: %s/%s 일",
-  "jade.society.crop_growth.mature":"성체",
-  "jade.society.crop_growth.stop":"생장 정지됨",
-  "jade.society.crop_growth.need_stem":"포도 지지대 필요",
-  "jade.society.crop_growth.need_lattice":"포도 격자판 필요",
-  "jade.society.crop_growth.need_farmland":"경작지에 심어야 함",
-  "jade.society.crop_growth.need_watered_farmland":"수중 경작지에 심어야 함",
-
+  "jade.society.crop_growth": "성장: %s/%s 일",
+  "jade.society.crop_growth.mature": "성체",
+  "jade.society.crop_growth.stop": "생장 정지됨",
+  "jade.society.crop_growth.need_stem": "포도 지지대 필요",
+  "jade.society.crop_growth.need_lattice": "포도 격자판 필요",
+  "jade.society.crop_growth.need_farmland": "경작지에 심어야 함",
+  "jade.society.crop_growth.need_watered_farmland": "수중 경작지에 심어야 함",
   "tooltip.society.coins": "§f●§r %s",
   "tooltip.society.stack_value": "총 가격",
   "tooltip.society.multipliers": " + 조정",
@@ -648,7 +629,6 @@
   "tooltip.society.cleavers": "몬스터에게서 요리 재료를 수확합니다",
   "tooltip.society.invitation": "마을에 주민을 초대하고 전화기에서 해당 주민의 상점을 개방합니다.",
   "tooltip.society.ripper_tooth": "물고기 연못의 물고기들을 위협하여 현재 활성화된 퀘스트를 변경합니다.",
-
   "block.society.aging_cask.description": "긴 시간을 들여 가공품을 숙성합니다",
   "block.society.ancient_cask.description": "매우 긴 시간을 들여 한 번 숙성한 가공품을 한 번 더 숙성합니다",
   "block.society.ancient_cask.description.warn": "농사 스킬 '고대 숙성'이 필요합니다",
@@ -752,7 +732,6 @@
   "block.society.villager_home.description": "주민을 마을로 이동시키고 주변을 집으로 지정합니다.\n다른 주민과 너무 가까이 설치할 수 없습니다.",
   "block.society.fish_pond_manager.description": "매일 아침 7시에 물고기 연못의 퀘스트를 처리합니다",
   "block.society.caterpillar_box.description": "보관한 애벌레 알을 5분마다 부화시킵니다. 상자의 상단으로 나비와 나방이 부화합니다.",
-
   "item.society.froggy_helm.description": "속에 커다란 혀가 들었습니다",
   "item.society.ribbit_drum.description": "멍청이 리빗이 두드리기 좋아하는 북",
   "item.society.ribbit_gadget.description": "축축한 기계 장치",
@@ -911,14 +890,13 @@
   "item.society.caterpillar_eggs.longwing.type": "종: %s",
   "item.society.caterpillar_eggs.longwing.parents": "어버이: %s & %s",
   "item.society.caterpillar_eggs.longwing.size": "최대 크기: %s",
-  
   "society.item.plushie.trait.description": "선릿 크리스탈로 동물 수용 시",
   "society.item.plushie.aquatic": "친수성",
   "society.item.plushie.aquatic.description": "매 수확마다 확률적으로 강/바다 젤리 획득\n§6희귀도마다 5%%",
   "society.item.plushie.woodsy": "수림",
   "society.item.plushie.woodsy.description": "매 수확마다 근처의 나무에서 원목 획득\n§6희귀도마다 8개 [범위: 5x5x5]",
   "society.item.plushie.eldritch": "섬뜩함",
-  "society.item.plushie.eldritch.description": "매 수확마다 은 원석 획득\n§6희귀도마다 1개",
+  "society.item.plushie.eldritch.description": "매 수확마다 은 원석 획득\n§6희귀도 2마다 1개",
   "society.item.plushie.wrathful": "공격적",
   "society.item.plushie.wrathful.description": "매 수확마다 납 원석 획득\n§6희귀도마다 3개",
   "society.item.plushie.sommelier": "소믈리에",
@@ -928,13 +906,13 @@
   "society.item.plushie.hungry": "먹보",
   "society.item.plushie.hungry.description": "확률적으로 한 번 더 수확\n§6희귀도마다 10%%",
   "society.item.plushie.anxious": "불안함",
-  "society.item.plushie.anxious.description": "확률적 수확 아이템의 수확 확률 상승\n§6희귀도마다 +25%%p",
+  "society.item.plushie.anxious.description": "확률적 수확 아이템의 수확 확률 상승\n§6희귀도마다 +15%%p",
   "society.item.plushie.shy": "수줍음",
   "society.item.plushie.shy.description": "주변에 다른 인형이 없을 때 수확량 두 배\n§6최대 탐색 범위 7x7x7, 희귀도마다 -2블록",
   "society.item.plushie.cheerful": "쾌활함",
-  "society.item.plushie.cheerful.description": "주변에 인형이 많을 때 수확량 두 배\n§6최소 필요 수량 24개, 희귀도마다 -4개 [범위: 5x5x5]",
+  "society.item.plushie.cheerful.description": "주변에 인형이 많을 때 수확량 두 배\n§6최소 필요 수량 32개, 희귀도마다 -4개 [범위: 5x5x5]",
   "society.item.plushie.machiavellian": "교활함",
-  "society.item.plushie.machiavellian.description": "매 수확마다 이리듐 파편 획득\n§6희귀도마다 1개",
+  "society.item.plushie.machiavellian.description": "매 수확마다 이리듐 파편 획득\n§6희귀도 2마다 1개",
   "society.item.plushie.cutesy": "깜찍함",
   "society.item.plushie.cutesy.description": "매 수확마다 가구 상자 획득\n§6희귀도마다 1개",
   "society.item.plushie.fashionista": "패셔니스타",
@@ -942,8 +920,7 @@
   "society.item.plushie.neutral": "중립",
   "society.item.plushie.neutral.description": "확률적으로 수확량 두 배\n§6희귀도마다 10%%",
   "society.item.plushie.chill": "냉정",
-  "society.item.plushie.chill.description": "매 수확마다 영롱한 다이아몬드 획득\n§6희귀도마다 1개",
-
+  "society.item.plushie.chill.description": "매 수확마다 다이아몬드 획득\n§6희귀도마다 1개",
   "society.trofers.pantry": "식료품 저장실 트로피",
   "society.trofers.vault": "금고 트로피",
   "society.trofers.boiler_room": "보일러실 트로피",
@@ -966,7 +943,6 @@
   "society.trofers.autumn_mayhem": "건축 대회 트로피 - Autumn Mayhem",
   "society.trofers.community_center": "건축 대회 트로피 - The Heart of the Community",
   "society.trofers.train_station": "건축 대회 트로피 - Medieval Train Station",
-
   "info.society.villager_unlock_condition.carpenter": "간단한 재료로 목수 초대장을 제작",
   "info.society.villager_unlock_condition.shepherd": "목수에게서 초대장 구매",
   "info.society.villager_unlock_condition.market": "목수에게서 초대장 구매",
@@ -977,7 +953,6 @@
   "info.society.villager_unlock_condition.trader": "해골 광산에 진입하고 목수에게서 초대장 구매",
   "info.society.villager_unlock_condition.witch": "네더에 진입하고 목수에게서 초대장 구매",
   "info.society.villager_unlock_condition.wise_oak": "야생에서 현명한 참나무를 찾고 대화하기",
-
   "block.society.aging_cask": "숙성용 나무통",
   "block.society.ancient_cask": "고대의 숙성통",
   "block.society.ancient_cider": "고대 시드르",
@@ -1950,7 +1925,7 @@
   "item.society.smoked_lava_pufferfish": "훈제된 용암복어",
   "item.society.smoked_leech": "훈제된 거머리",
   "item.society.smoked_magmacubefish": "훈제된 마그마큐브피시",
-  "item.society.smoked_minnow": "훈제된 피라미",  
+  "item.society.smoked_minnow": "훈제된 피라미",
   "item.society.smoked_muskellunge": "훈제된 강늉치고기",
   "item.society.smoked_neptuna": "훈제된 넵튜나",
   "item.society.smoked_obsidianfish": "훈제된 흑요어",

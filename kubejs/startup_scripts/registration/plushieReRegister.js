@@ -53,8 +53,8 @@ global.plushieRightClick = (click) => {
         let questItem =
           questList[affection * questOffset + Number(quest_id) - 1];
         let questName = Item.of(questItem).displayName;
-        if (item && item == questItem) {
-          if (!player.isCreative()) item.count--;
+        if (item && item == questItem && (player.isCreative() || item.count >= 2)) {
+          if (!player.isCreative()) item.count -= 2;
           level.spawnParticles(
             "minecraft:heart",
             true,
@@ -89,6 +89,7 @@ global.plushieRightClick = (click) => {
         } else {
           player.tell(Text.translatable("society.plushie.want_gift").gray());
           player.tell(questName);
+          player.tell(Text.of("2개가 필요합니다").darkGray());
         }
       }
       if (

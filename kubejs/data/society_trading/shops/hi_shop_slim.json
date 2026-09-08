@@ -1,10 +1,10 @@
 {
-  "shop_id": "hi_shop",
+  "shop_id": "hi_shop_slim",
   "name": "§6하이의 놀이터",
   "texture": "dialog:textures/portraits/market",
-  "entity": "easy_npc:humanoid",
+  "entity": "easy_npc:humanoid_slim",
   "entity_data": "hi_shop",
-  "hidden_from_selector": false,
+  "hidden_from_selector": true,
   "hidden_from_auto_trader": true,
   "selector_weight": 900,
   "jei_catalyst": {
@@ -26,7 +26,7 @@
         "count": 11
       },
       "numismatics_cost": 307200,
-      "trade_id": "hi_shop_title_gacha"
+      "trade_id": "hi_shop_title_gacha_slim"
     },
     {
       "offer": {
@@ -43,7 +43,7 @@
         "count": 44
       },
       "numismatics_cost": 1228800,
-      "trade_id": "hi_shop_glow_gacha"
+      "trade_id": "hi_shop_glow_gacha_slim"
     }
   ]
 }

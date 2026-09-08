@@ -60,6 +60,7 @@ var rNowSec, rBest, rDiff, rI;                     // secondsToRestart
 var sPeriod, sNowSec;                              // secondsToClean
 var uHeader, uFooter, uPacket, uI;                 // updateTabList
 var aI;                                            // actionBar
+var sndCmd;                                        // soundAll
 var tSrv, tNow, tSec, tPlayers, tOnline;           // tick
 var tCleanIn, tRestartIn, tKilled;
 
@@ -152,6 +153,18 @@ function tell(srv, component) {
   }
 }
 
+// 접속한 모든 사람에게, 각자 자기 위치에서 소리를 들려줍니다.
+function soundAll(srv, sound, volume, pitch) {
+  try {
+    sndCmd =
+      "execute as @a at @s run playsound " + sound +
+      " master @s ~ ~ ~ " + volume + " " + pitch;
+    srv.runCommandSilent(sndCmd);
+  } catch (err) {
+    /* 무시 */
+  }
+}
+
 function actionBar(players, component) {
   for (aI = 0; aI < players.length; aI++) {
     try {
@@ -232,6 +245,8 @@ ServerEvents.tick(function (event) {
         tKilled = 0;
       }
       if (tOnline > 0) {
+        soundAll(tSrv, "minecraft:block.note_block.bell", 1, 1.5);
+        soundAll(tSrv, "minecraft:entity.experience_orb.pickup", 0.7, 1.2);
         tell(
           tSrv,
           prefixed(
@@ -241,6 +256,8 @@ ServerEvents.tick(function (event) {
       }
     } else if (tOnline > 0 && CLEAN_WARN_AT.indexOf(tCleanIn) !== -1) {
       if (tCleanIn <= 5) {
+        // 5 -> 1초로 갈수록 음이 높아집니다 (0.8 ~ 1.6)
+        soundAll(tSrv, "minecraft:block.note_block.pling", 1, 0.8 + (5 - tCleanIn) * 0.2);
         actionBar(
           tPlayers,
           gradientText("청소까지 " + tCleanIn + "초", C_URGENT_A, C_URGENT_B).bold()
