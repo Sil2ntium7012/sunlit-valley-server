@@ -29,6 +29,10 @@ const CLEAN_WARN_AT = [60, 10, 5, 4, 3, 2, 1];
 
 const CLEAN_COMMAND = "kill @e[type=minecraft:item]";
 
+// 아침 6시(게임 내 시각 0)에 모드팩이 하루치 정산을 돌립니다.
+// 그 직후 이 초 동안은 우리 쪽 무거운 작업을 미룹니다.
+const MORNING_HOLD_SEC = 20;
+
 // 그라데이션 색 (0xRRGGBB)
 const C_CLEAN_A = 0xffe9a3;    // 연노랑
 const C_CLEAN_B = 0xff9d4d;    // 살구
@@ -38,12 +42,17 @@ const C_DONE_A = 0xa8e6a1;     // 연두
 const C_DONE_B = 0x4ec9a0;     // 청록
 const C_REBOOT_A = 0xa9d8ff;   // 하늘
 const C_REBOOT_B = 0xb69bff;   // 연보라
+const C_MORNING_A = 0xffe9a3;  // 아침 - 햇살
+const C_MORNING_B = 0xffc46b;
 const C_PREFIX_A = 0xffd479;   // 프리픽스 금색
 const C_PREFIX_B = 0xff9f43;
 // ────────────────────────────────────────────────────────────────────────────
 
 // ─── 상태 ───
 var lastSecond = -1;
+var lastDayTime = -1;      // 직전에 본 게임 내 시각 (0 = 아침 6시)
+var morningHold = 0;       // 아침 직후 무거운 작업을 미루는 카운터(초)
+var cleanPending = 0;      // 아침 때문에 미뤄진 청소가 있는지
 var stopCountdown = -1;
 var tabListOff = false;
 var gradientOff = false;
@@ -61,6 +70,7 @@ var sPeriod, sNowSec;                              // secondsToClean
 var uHeader, uFooter, uPacket, uI;                 // updateTabList
 var aI;                                            // actionBar
 var sndCmd;                                        // soundAll
+var mLevel, mTime;                                 // 아침 감지
 var tSrv, tNow, tSec, tPlayers, tOnline;           // tick
 var tCleanIn, tRestartIn, tKilled;
 
@@ -235,8 +245,37 @@ ServerEvents.tick(function (event) {
 
     if (tOnline > 0) updateTabList(tPlayers, tCleanIn, tRestartIn);
 
+    // ── 아침 6시 (게임 내 시각 0) ──
+    // 하루가 넘어가는 순간 모드팩이 작물 성장·기계 정산을 한꺼번에 돌려서
+    // 순간적으로 무거워집니다. 그래서 이 시점에는 우리 쪽 무거운 작업
+    // (바닥 아이템 청소)을 잠시 미뤄서 부하가 겹치지 않게 합니다.
+    try {
+      mLevel = tSrv.overworld();
+      mTime = mLevel.getDayTime() % 24000;
+      if (lastDayTime >= 0 && mTime < lastDayTime) {
+        morningHold = MORNING_HOLD_SEC;
+        if (tOnline > 0) {
+          tell(
+            tSrv,
+            prefixed(gradientText("아침이 되었습니다.", C_MORNING_A, C_MORNING_B))
+          );
+          soundAll(tSrv, "minecraft:block.note_block.chime", 0.8, 1.2);
+        }
+      }
+      lastDayTime = mTime;
+    } catch (err) {
+      /* 시각을 못 읽으면 조용히 넘어감 */
+    }
+    if (morningHold > 0) morningHold--;
+
     // ── 청소 ──
-    if (tCleanIn === CLEAN_EVERY_MIN * 60) {
+    if (tCleanIn === CLEAN_EVERY_MIN * 60 || cleanPending === 1) {
+      // 아침 정산과 겹치면 부하가 몰리므로 홀드가 풀릴 때까지 미룹니다
+      if (morningHold > 0) {
+        cleanPending = 1;
+        return;
+      }
+      cleanPending = 0;
       // /kill 은 처리한 엔티티 수를 돌려줍니다 = 사라진 아이템 묶음 수
       tKilled = 0;
       try {

@@ -2041,6 +2041,191 @@ global.adventurerProductMult = 1.0
 // 계산이 끝난 뒤 반으로 나누는 것이고, 2)는 global.crops만 건드립니다.
 // ※ 태그(data/society/tags/items/brine_and_punishment.json)를 고치면 아래 목록도
 //   같이 맞춰주세요. 목록에 없는 아이템은 그냥 무시되므로 오타가 나도 안전합니다.
+
+// ─── 하이의 놀이터 : 판매가 밸런스 ─────────────────────────────────────────────
+//  물고기 요리 ×3 / 그 밖의 요리 ×2 / 작물 ×0.9 / 병조림·와인·차·칵테일 ×1.5
+//  값이 아주 낮은 "간단한 요리"(레시피 원값 24 미만)와 절임류는 손대지 않습니다.
+//  ※ 이 블록은 절임 반값 처리보다 먼저 실행됩니다.
+const HI_FISH_DISH_MULT = 3;
+const HI_DISH_MULT = 2;
+const HI_CROP_MULT = 0.9;
+const HI_DRINK_MULT = 1.5;
+
+// 물고기·해산물이 들어가는 요리 (45종)
+const HI_FISH_DISHES = new Set([
+  "bakery:grilled_salmon_sandwich",
+  "candlelight:salmon_on_white_wine",
+  "candlelight:tropical_fish_supreme",
+  "crabbersdelight:clam_bake",
+  "crabbersdelight:clam_chowder",
+  "crabbersdelight:cooked_glow_squid_tentacles",
+  "crabbersdelight:cooked_tropical_fish",
+  "crabbersdelight:crab_cakes",
+  "crabbersdelight:fish_stick",
+  "crabbersdelight:seafood_gumbo",
+  "crabbersdelight:shrimp_fried_rice",
+  "crabbersdelight:shrimp_skewer",
+  "crabbersdelight:squid_kebob",
+  "crabbersdelight:surf_and_turf",
+  "farm_and_charm:cooked_cod",
+  "farm_and_charm:cooked_salmon",
+  "farmersdelight:baked_cod_stew",
+  "farmersdelight:cod_roll",
+  "farmersdelight:fish_stew",
+  "farmersdelight:grilled_salmon",
+  "farmersdelight:rice_roll_medley_block",
+  "farmersdelight:salmon_roll",
+  "farmersdelight:squid_ink_pasta",
+  "minecraft:cooked_salmon",
+  "netherdepthsupgrade:baked_blazefish_stew",
+  "netherdepthsupgrade:baked_glowdine_stew",
+  "netherdepthsupgrade:baked_lava_pufferfish_stew",
+  "netherdepthsupgrade:baked_magmacubefish_stew",
+  "netherdepthsupgrade:baked_obsidianfish_stew",
+  "netherdepthsupgrade:baked_searing_cod_stew",
+  "netherdepthsupgrade:baked_soulsucker_stew",
+  "netherdepthsupgrade:blazefish_roll",
+  "netherdepthsupgrade:glowdine_roll",
+  "netherdepthsupgrade:lava_pufferfish_roll",
+  "netherdepthsupgrade:magmacubefish_roll",
+  "netherdepthsupgrade:nether_rice_roll_medley_block",
+  "netherdepthsupgrade:obsidianfish_roll",
+  "netherdepthsupgrade:searing_cod_roll",
+  "netherdepthsupgrade:soulsucker_roll",
+  "quark:cooked_crab_leg",
+  "unusualfishmod:odd_fishsticks",
+  "unusualfishmod:weird_goldfish",
+  "veggiesdelight:fish_and_chips",
+  "veggiesdelight:garlic_baked_cod",
+  "vintagedelight:salted_salmon",
+]);
+
+// 버프 제외 - 간단한 요리 및 절임류 (95종)
+const HI_NO_BUFF_DISHES = new Set([
+  "aquaculture:fish_fillet_cooked",
+  "aquaculture:sushi",
+  "atmospheric:roasted_yucca_fruit",
+  "autumnity:cooked_turkey_piece",
+  "autumnity:foul_soup",
+  "bakery:apple_cupcake",
+  "bakery:apple_jam",
+  "bakery:apple_pie_slice",
+  "bakery:baguette",
+  "bakery:braided_bread",
+  "bakery:bread",
+  "bakery:bun",
+  "bakery:chocolate_gateau_slice",
+  "bakery:chocolate_tart_slice",
+  "bakery:chocolate_truffle",
+  "bakery:cornet",
+  "bakery:croissant",
+  "bakery:crusty_bread",
+  "bakery:glowberry_pie_slice",
+  "bakery:misslilitu_biscuit",
+  "bakery:strawberry_cake_slice",
+  "bakery:strawberry_cupcake",
+  "bakery:strawberry_glazed_cookie",
+  "bakery:strawberry_jam",
+  "bakery:sweetberry_cake_slice",
+  "bakery:sweetberry_cupcake",
+  "bakery:sweetberry_glazed_cookie",
+  "bakery:sweetberry_jam",
+  "bakery:toast",
+  "bakery:waffle",
+  "beachparty:cooked_mussel_meat",
+  "brewery:dried_barley",
+  "brewery:half_chicken",
+  "brewery:pretzel",
+  "candlelight:beef_tartare",
+  "candlelight:chocolate_mousse",
+  "candlelight:khinkali",
+  "candlelight:mozzarella",
+  "candlelight:omelet",
+  "crabbersdelight:cooked_clam_meat",
+  "crabbersdelight:cooked_clawster",
+  "crabbersdelight:cooked_crab",
+  "crabbersdelight:cooked_shrimp",
+  "crabbersdelight:cooked_squid_tentacles",
+  "crabbersdelight:jar_of_pickles",
+  "crabbersdelight:kelp_shake",
+  "crabbersdelight:sea_pickle_juice",
+  "create_central_kitchen:pumpkin_pie_slice",
+  "farm_and_charm:barley_soup",
+  "farm_and_charm:butter",
+  "farm_and_charm:farmers_bread",
+  "farm_and_charm:grandmothers_strawberry_cake",
+  "farm_and_charm:pasta_with_onion_sauce",
+  "farmersdelight:cooked_rice",
+  "farmersdelight:sweet_berry_cookie",
+  "meadow:cheese_roll",
+  "meadow:cheese_sandwich",
+  "meadow:cheese_tart_slice",
+  "meadow:cheesecake_slice",
+  "minecraft:bread",
+  "minecraft:cooked_beef",
+  "minecraft:cooked_chicken",
+  "minecraft:cooked_cod",
+  "minecraft:cooked_mutton",
+  "minecraft:cookie",
+  "minecraft:mushroom_stew",
+  "minecraft:popped_chorus_fruit",
+  "refurbished_furniture:bread_slice",
+  "refurbished_furniture:cheese_toastie",
+  "refurbished_furniture:sweet_berry_jam_toast",
+  "refurbished_furniture:toast",
+  "snowyspirit:candy_cane",
+  "snowyspirit:gingerbread_cookie",
+  "supplementaries:lumisene_bottle",
+  "untitledduckmod:cooked_duck",
+  "untitledduckmod:cooked_goose",
+  "veggiesdelight:baked_sweet_potato",
+  "veggiesdelight:fermented_garlic_honey",
+  "veggiesdelight:roasted_garlic_clove",
+  "vintagedelight:century_egg",
+  "vintagedelight:kimchi",
+  "vintagedelight:oatmeal_cookie",
+  "vintagedelight:overnight_oats",
+  "vintagedelight:pickle",
+  "vintagedelight:pickled_beetroot",
+  "vintagedelight:pickled_egg",
+  "vintagedelight:pickled_onion",
+  "vintagedelight:pickled_pepper",
+  "vintagedelight:pickled_pitcher_pod",
+  "vintagedelight:salted_cod",
+  "vintagedelight:surstromming",
+  "vintagedelight:vinegar_mason_jar",
+  "windswept:pinecone_jam_bottle",
+  "windswept:roasted_chestnut_crate",
+  "windswept:roasted_chestnuts",
+]);
+
+// 토마토는 가격 인하에서 제외
+const HI_CROP_EXCLUDE = new Set([
+  "farmersdelight:tomato",
+  "farmersdelight:rotten_tomato",
+  "farmersdelight:tomato_crate",
+]);
+
+const hiScalePrice = (entry, mult) => {
+  entry.value = Math.max(1, Math.round(entry.value * mult));
+};
+
+global.cooking.forEach((dish) => {
+  if (HI_NO_BUFF_DISHES.has(dish.item)) return;
+  hiScalePrice(dish, HI_FISH_DISHES.has(dish.item) ? HI_FISH_DISH_MULT : HI_DISH_MULT);
+});
+
+global.crops.forEach((crop) => {
+  if (!HI_CROP_EXCLUDE.has(crop.item)) hiScalePrice(crop, HI_CROP_MULT);
+});
+
+[global.preserves, global.wines, global.cocktails, global.herbalBrews, global.brews].forEach(
+  (list) => {
+    list.forEach((entry) => hiScalePrice(entry, HI_DRINK_MULT));
+  }
+);
+// ─────────────────────────────────────────────────────────────────────────────
+
 const PICKLE_PRICE_DIVISOR = 2;
 const PICKLED_ITEMS = new Set([
   "vintagedelight:century_egg",

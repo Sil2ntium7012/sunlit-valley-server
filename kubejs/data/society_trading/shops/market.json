@@ -858,9 +858,9 @@
       },
       "request": {
         "item": "numismatics:cog",
-        "count": 4
+        "count": 2
       },
-      "numismatics_cost": 256,
+      "numismatics_cost": 128,
       "seasons_required": [
         "early_summer",
         "mid_summer",
@@ -896,10 +896,10 @@
         "count": 1
       },
       "request": {
-        "item": "numismatics:cog",
-        "count": 3
+        "item": "numismatics:bevel",
+        "count": 12
       },
-      "numismatics_cost": 192,
+      "numismatics_cost": 96,
       "seasons_required": [
         "early_summer",
         "mid_summer",
@@ -1027,9 +1027,9 @@
       },
       "request": {
         "item": "numismatics:cog",
-        "count": 2
+        "count": 1
       },
-      "numismatics_cost": 128,
+      "numismatics_cost": 64,
       "trade_id": "meadow:farmer_alpine_salt_for_cog"
     },
     {
@@ -1038,10 +1038,10 @@
         "count": 1
       },
       "request": {
-        "item": "numismatics:sprocket",
+        "item": "numismatics:bevel",
         "count": 1
       },
-      "numismatics_cost": 16,
+      "numismatics_cost": 8,
       "trade_id": "minecraft:farmer_sugar_for_sprocket"
     },
     {
@@ -1051,9 +1051,9 @@
       },
       "request": {
         "item": "numismatics:spur",
-        "count": 4
+        "count": 2
       },
-      "numismatics_cost": 4,
+      "numismatics_cost": 2,
       "trade_id": "minecraft:farmer_glass_bottle_for_spur"
     },
     {
@@ -1062,10 +1062,10 @@
         "count": 8
       },
       "request": {
-        "item": "numismatics:sprocket",
+        "item": "numismatics:bevel",
         "count": 1
       },
-      "numismatics_cost": 16,
+      "numismatics_cost": 8,
       "trade_id": "minecraft:farmer_glass_bottle_for_sprocket"
     },
     {
@@ -1075,9 +1075,9 @@
       },
       "request": {
         "item": "numismatics:spur",
-        "count": 2
+        "count": 1
       },
-      "numismatics_cost": 2,
+      "numismatics_cost": 1,
       "trade_id": "minecraft:farmer_wine_bottle_for_spur"
     },
     {
@@ -1087,9 +1087,9 @@
       },
       "request": {
         "item": "numismatics:spur",
-        "count": 4
+        "count": 2
       },
-      "numismatics_cost": 4,
+      "numismatics_cost": 2,
       "trade_id": "minecraft_farmer_beer_mug_for_spur"
     },
     {
@@ -1099,9 +1099,9 @@
       },
       "request": {
         "item": "numismatics:spur",
-        "count": 4
+        "count": 2
       },
-      "numismatics_cost": 4,
+      "numismatics_cost": 2,
       "trade_id": "minecraft_farmer_bowl_for_spur"
     },
     {

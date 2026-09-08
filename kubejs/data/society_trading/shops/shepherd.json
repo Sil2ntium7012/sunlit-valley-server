@@ -246,14 +246,11 @@
       },
       "request": {
         "item": "numismatics:sun",
-        "count": 64
+        "count": 48
       },
-      "numismatics_cost": 409600,
+      "numismatics_cost": 196608,
       "trade_id": "shepherd_friendship_necklace_for_sun",
-      "second_request": {
-        "item": "numismatics:sun",
-        "count": 36
-      }
+      "limit": 3
     }
   ]
 }

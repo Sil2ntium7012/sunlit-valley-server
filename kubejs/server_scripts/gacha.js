@@ -22,6 +22,10 @@ const TITLE_WIN_CHANCE = 0.10;    // 칭호 당첨 10%
 const GLOW_RAINBOW_CHANCE = 0.001; // 무지개 0.1%
 const GLOW_WIN_CHANCE = 0.021;     // 무지개 포함 누적 2.1% (= 일반색 2%)
 
+// 보유 칭호를 저장할 때 쓰는 구분자.
+// "|" 는 정규식 메타문자라서 자바 문자열의 split 이 글자마다 잘라버립니다. 쓰지 마세요.
+const TITLE_SEP = ";";
+
 const RAINBOW_TICK = 4;            // 무지개 색 바뀌는 주기(틱)
 const GLOW_DURATION = 1000000;     // 발광 지속(초). 로그인마다 갱신
 // ────────────────────────────────────────────────────────────────────────────
@@ -131,14 +135,35 @@ var wTotal, wI, wRoll;                     // pickTitle
 var fCmd;                                  // fx
 var tFound, tI;                            // findTitle
 var gFound, gI;                            // findGlow
-var oList, oI, oArr;                       // ownedTitles
+var oList, oI, oArr, oRaw;                 // ownedTitles
 var aTeam, aSrv, aTitle, aGlow, aTitleId;  // applyPlayer
 var rBox, rPlayer, rSrv, rRoll, rPick, rN, rOwned, rDup;  // rollTitle
 var eRoll, ePick, ePlayer, eSrv;           // rollGlow
 var dNbt, dColor, dPlayer, dSrv, dGlow;    // useGlowDye
 var cPlayer, cIdx, cOwned, cI, cT, cMsg;   // 칭호 명령어
 var kPlayers, kI, kP, kColor;              // 무지개 틱
-var sCount, sI;                            // 상자 개봉 반복
+var sCount, sI, bulkMode, bulkMiss;        // 상자 개봉 반복
+var bItem, bId, bKind;                     // 블록에 대고 우클릭
+
+// ─── 상자 아이템 NBT (상점에서 파는 것과 완전히 동일해야 함) ───
+const TITLE_BOX_NBT =
+  "{hiGacha:\"title\",display:{Name:'{\"text\":\"칭호 뽑기 상자\",\"italic\":false,\"color\":\"light_purple\",\"bold\":true}'," +
+  "Lore:['{\"text\":\"우클릭하면 칭호를 뽑습니다\",\"italic\":false,\"color\":\"gray\"}'," +
+  "'{\"text\":\"여러 개를 한 번에 열려면 바닥에 버리세요\",\"italic\":false,\"color\":\"gray\"}'," +
+  "'{\"text\":\"칭호 10%  /  꽝 90%\",\"italic\":false,\"color\":\"dark_gray\"}']}}";
+
+const GLOW_BOX_NBT =
+  "{hiGacha:\"glow\",display:{Name:'{\"text\":\"발광 뽑기 상자\",\"italic\":false,\"color\":\"yellow\",\"bold\":true}'," +
+  "Lore:['{\"text\":\"우클릭하면 발광 염료를 뽑습니다\",\"italic\":false,\"color\":\"gray\"}'," +
+  "'{\"text\":\"여러 개를 한 번에 열려면 바닥에 버리세요\",\"italic\":false,\"color\":\"gray\"}'," +
+  "'{\"text\":\"발광 2%  /  무지개 0.1%\",\"italic\":false,\"color\":\"dark_gray\"}']}}";
+
+// ─── 관리자 명령어가 쓰는 변수 ───
+var gbItem, gbCount, gbKind;               // giveBox
+var gtT, gtOwned, gtI, gtHas;              // grantTitle
+var ggG, ggI, ggNbt;                       // giveGlowDye
+var rsPlayer;                              // resetPlayer
+var lsI, lsMsg, lsRow, lsCount;            // listAllTitles
 
 // ─── 유틸 ───────────────────────────────────────────────────────────────────
 function prefixed(body) {
@@ -185,10 +210,17 @@ function pickTitle() {
 }
 
 // 보유 칭호 배열
+// persistentData 는 자바 문자열을 돌려줍니다. "" + 로 자바스크립트 문자열로 바꿔야
+// split 이 정규식이 아닌 일반 문자열로 동작합니다.
 function ownedTitles(player) {
-  oList = player.persistentData.getString("hiTitles");
-  if (!oList || oList.length === 0) return [];
-  oArr = oList.split("|");
+  oList = "" + player.persistentData.getString("hiTitles");
+  if (!oList || oList.length === 0 || oList === "null") return [];
+  oList = oList.split("|").join(TITLE_SEP);   // 예전 "|" 저장분 자동 변환
+  oArr = [];
+  oRaw = oList.split(TITLE_SEP);
+  for (oI = 0; oI < oRaw.length; oI++) {
+    if (oRaw[oI] && oRaw[oI].length > 0) oArr.push(oRaw[oI]);
+  }
   return oArr;
 }
 
@@ -238,6 +270,10 @@ function rollTitle(player) {
 
   if (rRoll >= TITLE_WIN_CHANCE) {
     // ── 꽝 ──
+    if (bulkMode) {
+      bulkMiss++;
+      return;
+    }
     fx(rPlayer, "particle minecraft:smoke ~ ~1 ~ 0.4 0.5 0.4 0.02 60 force");
     fx(rPlayer, "particle minecraft:large_smoke ~ ~1 ~ 0.3 0.4 0.3 0.01 25 force");
     fx(rPlayer, "playsound minecraft:entity.villager.no master @a ~ ~ ~ 1 0.7");
@@ -269,7 +305,7 @@ function rollTitle(player) {
   }
 
   rOwned.push(rPick.t);
-  rPlayer.persistentData.putString("hiTitles", rOwned.join("|"));
+  rPlayer.persistentData.putString("hiTitles", rOwned.join(TITLE_SEP));
 
   rPlayer.tell(
     prefixed(Text.of("칭호 ").white())
@@ -298,6 +334,10 @@ function rollGlow(player) {
 
   if (eRoll >= GLOW_WIN_CHANCE) {
     // ── 꽝 ──
+    if (bulkMode) {
+      bulkMiss++;
+      return;
+    }
     fx(ePlayer, "particle minecraft:smoke ~ ~1 ~ 0.4 0.5 0.4 0.02 60 force");
     fx(ePlayer, "particle minecraft:large_smoke ~ ~1 ~ 0.3 0.4 0.3 0.01 25 force");
     fx(ePlayer, "playsound minecraft:entity.villager.no master @a ~ ~ ~ 1 0.7");
@@ -379,6 +419,7 @@ function useGlowDye(player, nbt) {
 
 // ─── 상자 이벤트 ────────────────────────────────────────────────────────────
 ItemEvents.rightClicked("supplementaries:present_black", function (event) {
+  if (event.hand == "OFF_HAND") return;
   if (!event.item.nbt || !event.item.nbt.contains("hiGacha")) return;
   if (event.item.nbt.getString("hiGacha") !== "title") return;
   event.item.count = event.item.count - 1;
@@ -386,6 +427,7 @@ ItemEvents.rightClicked("supplementaries:present_black", function (event) {
 });
 
 ItemEvents.rightClicked("supplementaries:present_yellow", function (event) {
+  if (event.hand == "OFF_HAND") return;
   if (!event.item.nbt || !event.item.nbt.contains("hiGacha")) return;
   if (event.item.nbt.getString("hiGacha") !== "glow") return;
   event.item.count = event.item.count - 1;
@@ -398,7 +440,15 @@ ItemEvents.dropped("supplementaries:present_black", function (event) {
   if (event.item.nbt.getString("hiGacha") !== "title") return;
   sCount = event.item.count;
   event.itemEntity.discard();
+  bulkMode = true;
+  bulkMiss = 0;
   for (sI = 0; sI < sCount; sI++) rollTitle(event.player);
+  bulkMode = false;
+  if (bulkMiss > 0) {
+    event.player.tell(
+      prefixed(Text.of("꽝 " + bulkMiss + "번 (" + sCount + "개 개봉)").darkGray())
+    );
+  }
 });
 
 ItemEvents.dropped("supplementaries:present_yellow", function (event) {
@@ -406,18 +456,54 @@ ItemEvents.dropped("supplementaries:present_yellow", function (event) {
   if (event.item.nbt.getString("hiGacha") !== "glow") return;
   sCount = event.item.count;
   event.itemEntity.discard();
+  bulkMode = true;
+  bulkMiss = 0;
   for (sI = 0; sI < sCount; sI++) rollGlow(event.player);
+  bulkMode = false;
+  if (bulkMiss > 0) {
+    event.player.tell(
+      prefixed(Text.of("꽝 " + bulkMiss + "번 (" + sCount + "개 개봉)").darkGray())
+    );
+  }
+});
+
+// ─── 블록에 대고 우클릭해도 설치되지 않고 열리도록 ─────────────────────────
+//  선물 상자는 supplementaries 의 "설치 가능한 블록" 이라, 블록 면을 보고
+//  우클릭하면 뽑기가 아니라 그냥 설치돼 버립니다. 그래서 설치를 취소하고
+//  대신 상자를 엽니다.
+BlockEvents.rightClicked(function (event) {
+  if (event.hand == "OFF_HAND") return;
+  bItem = event.item;
+  if (!bItem) return;
+  bId = "" + bItem.id;
+  if (bId !== "supplementaries:present_black" && bId !== "supplementaries:present_yellow") return;
+  if (!bItem.nbt || !bItem.nbt.contains("hiGacha")) return;
+
+  event.cancel();
+  bKind = "" + bItem.nbt.getString("hiGacha");
+  bItem.count = bItem.count - 1;
+  if (bKind === "title") rollTitle(event.player);
+  else if (bKind === "glow") rollGlow(event.player);
+});
+
+// 발광 염료를 양(羊) 같은 엔티티에 쓰지 못하게 (바닐라 염색으로 사라지는 것 방지)
+ItemEvents.entityInteracted(function (event) {
+  if (!event.item || !event.item.nbt) return;
+  if (!event.item.nbt.contains("hiGlow")) return;
+  event.cancel();
 });
 
 // ─── 발광 염료 우클릭 ───────────────────────────────────────────────────────
 for (var regI = 0; regI < GLOWS.length; regI++) {
   ItemEvents.rightClicked(GLOWS[regI].d, function (event) {
+    if (event.hand == "OFF_HAND") return;
     if (!event.item.nbt || !event.item.nbt.contains("hiGlow")) return;
     event.item.count = event.item.count - 1;
     useGlowDye(event.player, event.item.nbt);
   });
 }
 ItemEvents.rightClicked("minecraft:magenta_dye", function (event) {
+  if (event.hand == "OFF_HAND") return;
   if (!event.item.nbt || !event.item.nbt.contains("hiGlow")) return;
   event.item.count = event.item.count - 1;
   useGlowDye(event.player, event.item.nbt);
@@ -556,6 +642,273 @@ ServerEvents.commandRegistry(function (event) {
       .executes(function (ctx) {
         return ctx.source.player ? clearGlow(ctx.source.player) : 0;
       })
+  );
+});
+
+// ============================================================================
+//  관리자 명령어 (OP 전용, 권한 레벨 2 이상)
+// ============================================================================
+function isOp(src) {
+  try {
+    return src.hasPermission(2);
+  } catch (err) {
+    return false;
+  }
+}
+
+function tellSrc(src, component) {
+  try {
+    src.sendSuccess(component, false);
+  } catch (err) {
+    try { src.sendSystemMessage(component); } catch (e2) { /* 무시 */ }
+  }
+}
+
+// /뽑기지급 <대상> <칭호|발광> <개수>
+function giveBox(target, kind, count, src) {
+  if (!target) return 0;
+
+  gbCount = count;
+  if (gbCount < 1) gbCount = 1;
+  if (gbCount > 64) gbCount = 64;
+
+  gbKind = kind;
+  if (gbKind === "칭호" || gbKind === "title") {
+    gbItem = Item.of("supplementaries:present_black", TITLE_BOX_NBT);
+  } else if (gbKind === "발광" || gbKind === "glow") {
+    gbItem = Item.of("supplementaries:present_yellow", GLOW_BOX_NBT);
+  } else {
+    tellSrc(src, Text.of("종류는 칭호 또는 발광 이어야 합니다.").red());
+    return 0;
+  }
+
+  gbItem.count = gbCount;
+  target.give(gbItem);
+
+  target.tell(prefixed(Text.of(gbKind + " 뽑기 상자 " + gbCount + "개를 받았습니다!").color(0x8be0a8)));
+  fx(target, "playsound minecraft:entity.item.pickup master @a ~ ~ ~ 1 1.2");
+  tellSrc(
+    src,
+    Text.of(target.username + " 에게 " + gbKind + " 뽑기 상자 " + gbCount + "개 지급").green()
+  );
+  return 1;
+}
+
+// /칭호지급 <대상> <칭호이름>
+function grantTitle(target, name, src) {
+  if (!target) return 0;
+
+  gtT = findTitle(name);
+  if (!gtT) {
+    tellSrc(src, Text.of("\"" + name + "\" 라는 칭호는 없습니다. /칭호전체 로 목록을 보세요.").red());
+    return 0;
+  }
+
+  gtOwned = ownedTitles(target);
+  gtHas = false;
+  for (gtI = 0; gtI < gtOwned.length; gtI++) {
+    if (gtOwned[gtI] === gtT.t) gtHas = true;
+  }
+  if (gtHas) {
+    tellSrc(src, Text.of(target.username + " 은(는) 이미 [" + gtT.t + "] 을(를) 가지고 있습니다.").yellow());
+    return 0;
+  }
+
+  gtOwned.push(gtT.t);
+  target.persistentData.putString("hiTitles", gtOwned.join(TITLE_SEP));
+
+  target.tell(
+    prefixed(Text.of("칭호 ").white())
+      .append(Text.of("[" + gtT.t + "]").color(0xffd479).bold())
+      .append(Text.of(" 를 지급받았습니다!").white())
+  );
+  fx(target, "particle minecraft:totem_of_undying ~ ~1 ~ 0.4 0.6 0.4 0.4 80 force");
+  fx(target, "playsound minecraft:entity.player.levelup master @a ~ ~ ~ 1 1.2");
+  tellSrc(src, Text.of(target.username + " 에게 칭호 [" + gtT.t + "] 지급").green());
+  return 1;
+}
+
+// /발광지급 <대상> <색이름>
+function giveGlowDye(target, colorName, src) {
+  if (!target) return 0;
+
+  if (colorName === "무지개" || colorName === "rainbow") {
+    target.give(
+      Item.of(
+        "minecraft:magenta_dye",
+        '{hiGlow:"rainbow",HideFlags:1,Enchantments:[{}],display:{Name:\'{"text":"발광 염료 (무지개)","italic":false,"color":"light_purple","bold":true}\',Lore:[\'{"text":"우클릭하면 무지개 발광이 켜집니다","italic":false,"color":"gray"}\']}}'
+      )
+    );
+    target.tell(prefixed(Text.of("무지개 발광 염료를 지급받았습니다!").color(0xff66ff).bold()));
+    tellSrc(src, Text.of(target.username + " 에게 무지개 발광 염료 지급").green());
+    return 1;
+  }
+
+  ggG = null;
+  for (ggI = 0; ggI < GLOWS.length; ggI++) {
+    if (GLOWS[ggI].n === colorName || GLOWS[ggI].c === colorName) ggG = GLOWS[ggI];
+  }
+  if (!ggG) {
+    tellSrc(src, Text.of("\"" + colorName + "\" 색은 없습니다. /발광전체 로 목록을 보세요.").red());
+    return 0;
+  }
+
+  ggNbt =
+    '{hiGlow:"' + ggG.c + '",display:{Name:\'{"text":"발광 염료 (' + ggG.n +
+    ')","italic":false,"color":"' + ggG.c +
+    '"}\',Lore:[\'{"text":"우클릭하면 발광이 켜집니다","italic":false,"color":"gray"}\']}}';
+
+  target.give(Item.of(ggG.d, ggNbt));
+  target.tell(
+    prefixed(Text.of("발광 염료 (" + ggG.n + ")").color(0x8be0a8)).append(Text.of(" 를 지급받았습니다!").white())
+  );
+  tellSrc(src, Text.of(target.username + " 에게 발광 염료 (" + ggG.n + ") 지급").green());
+  return 1;
+}
+
+// /칭호초기화 <대상>
+function resetPlayer(target, src) {
+  if (!target) return 0;
+  rsPlayer = target;
+  rsPlayer.persistentData.putString("hiTitles", "");
+  rsPlayer.persistentData.putString("hiTitle", "");
+  rsPlayer.persistentData.putString("hiGlow", "");
+  applyPlayer(rsPlayer);
+  rsPlayer.tell(prefixed(Text.of("칭호와 발광이 모두 초기화되었습니다.").gray()));
+  tellSrc(src, Text.of(rsPlayer.username + " 의 칭호/발광 전부 초기화").green());
+  return 1;
+}
+
+// /칭호전체
+function listAllTitles(src) {
+  tellSrc(src, Text.of("전체 칭호 " + TITLES.length + "종").white().bold());
+  lsRow = "";
+  lsCount = 0;
+  for (lsI = 0; lsI < TITLES.length; lsI++) {
+    lsRow = lsRow + TITLES[lsI].t + "  ";
+    lsCount++;
+    if (lsCount >= 6 || lsI === TITLES.length - 1) {
+      tellSrc(src, Text.of("  " + lsRow).gray());
+      lsRow = "";
+      lsCount = 0;
+    }
+  }
+  return 1;
+}
+
+// /발광전체
+function listAllGlows(src) {
+  lsRow = "";
+  for (lsI = 0; lsI < GLOWS.length; lsI++) lsRow = lsRow + GLOWS[lsI].n + "  ";
+  tellSrc(src, Text.of("발광 색 " + GLOWS.length + "종 + 무지개").white().bold());
+  tellSrc(src, Text.of("  " + lsRow + "무지개").gray());
+  return 1;
+}
+
+ServerEvents.commandRegistry(function (event) {
+  // /뽑기지급 <대상> <칭호|발광> <개수>
+  event.register(
+    event.commands
+      .literal("뽑기지급")
+      .requires(isOp)
+      .then(
+        event.commands
+          .argument("대상", event.arguments.PLAYER.create(event))
+          .then(
+            event.commands
+              .argument("종류", event.arguments.WORD.create(event))
+              .then(
+                event.commands
+                  .argument("개수", event.arguments.INTEGER.create(event))
+                  .executes(function (ctx) {
+                    return giveBox(
+                      event.arguments.PLAYER.getResult(ctx, "대상"),
+                      event.arguments.WORD.getResult(ctx, "종류"),
+                      event.arguments.INTEGER.getResult(ctx, "개수"),
+                      ctx.source
+                    );
+                  })
+              )
+              .executes(function (ctx) {
+                return giveBox(
+                  event.arguments.PLAYER.getResult(ctx, "대상"),
+                  event.arguments.WORD.getResult(ctx, "종류"),
+                  1,
+                  ctx.source
+                );
+              })
+          )
+      )
+  );
+
+  // /칭호지급 <대상> <칭호이름>
+  event.register(
+    event.commands
+      .literal("칭호지급")
+      .requires(isOp)
+      .then(
+        event.commands
+          .argument("대상", event.arguments.PLAYER.create(event))
+          .then(
+            event.commands
+              .argument("칭호", event.arguments.GREEDY_STRING.create(event))
+              .executes(function (ctx) {
+                return grantTitle(
+                  event.arguments.PLAYER.getResult(ctx, "대상"),
+                  event.arguments.GREEDY_STRING.getResult(ctx, "칭호"),
+                  ctx.source
+                );
+              })
+          )
+      )
+  );
+
+  // /발광지급 <대상> <색>
+  event.register(
+    event.commands
+      .literal("발광지급")
+      .requires(isOp)
+      .then(
+        event.commands
+          .argument("대상", event.arguments.PLAYER.create(event))
+          .then(
+            event.commands
+              .argument("색", event.arguments.GREEDY_STRING.create(event))
+              .executes(function (ctx) {
+                return giveGlowDye(
+                  event.arguments.PLAYER.getResult(ctx, "대상"),
+                  event.arguments.GREEDY_STRING.getResult(ctx, "색"),
+                  ctx.source
+                );
+              })
+          )
+      )
+  );
+
+  // /칭호초기화 <대상>
+  event.register(
+    event.commands
+      .literal("칭호초기화")
+      .requires(isOp)
+      .then(
+        event.commands
+          .argument("대상", event.arguments.PLAYER.create(event))
+          .executes(function (ctx) {
+            return resetPlayer(event.arguments.PLAYER.getResult(ctx, "대상"), ctx.source);
+          })
+      )
+  );
+
+  // 목록 보기
+  event.register(
+    event.commands.literal("칭호전체").requires(isOp).executes(function (ctx) {
+      return listAllTitles(ctx.source);
+    })
+  );
+  event.register(
+    event.commands.literal("발광전체").requires(isOp).executes(function (ctx) {
+      return listAllGlows(ctx.source);
+    })
   );
 });
 
