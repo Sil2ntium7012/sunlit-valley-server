@@ -1,0 +1,319 @@
+{
+  "shop_id": "cooking_slim",
+  "name": "§e요리",
+  "texture": "dialog:textures/portraits/market",
+  "entity": "easy_npc:humanoid_slim",
+  "entity_data": "cooking_shop",
+  "hidden_from_selector": true,
+  "hidden_from_auto_trader": true,
+  "selector_weight": 902,
+  "jei_catalyst": {
+    "item": "minecraft:villager_spawn_egg"
+  },
+  "trades": [
+    {
+      "offer": {
+        "item": "farmersdelight:rice",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_market_rice"
+    },
+    {
+      "offer": {
+        "item": "minecraft:sugar_cane",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:bevel",
+        "count": 12
+      },
+      "numismatics_cost": 96,
+      "trade_id": "cooking_market_sugar_cane"
+    },
+    {
+      "offer": {
+        "item": "meadow:alpine_salt",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 1
+      },
+      "numismatics_cost": 64,
+      "trade_id": "cooking_farmer_alpine_salt_for_cog"
+    },
+    {
+      "offer": {
+        "item": "minecraft:sugar",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:bevel",
+        "count": 1
+      },
+      "numismatics_cost": 8,
+      "trade_id": "cooking_farmer_sugar_for_sprocket"
+    },
+    {
+      "offer": {
+        "item": "minecraft:glass_bottle",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:spur",
+        "count": 2
+      },
+      "numismatics_cost": 2,
+      "trade_id": "cooking_farmer_glass_bottle_for_spur"
+    },
+    {
+      "offer": {
+        "item": "bakery:jar",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:bevel",
+        "count": 1
+      },
+      "numismatics_cost": 8,
+      "trade_id": "cooking_farmer_glass_bottle_for_sprocket"
+    },
+    {
+      "offer": {
+        "item": "vinery:wine_bottle",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:spur",
+        "count": 1
+      },
+      "numismatics_cost": 1,
+      "trade_id": "cooking_farmer_wine_bottle_for_spur"
+    },
+    {
+      "offer": {
+        "item": "brewery:beer_mug",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:spur",
+        "count": 2
+      },
+      "numismatics_cost": 2,
+      "trade_id": "cooking_minecraft_farmer_beer_mug_for_spur"
+    },
+    {
+      "offer": {
+        "item": "minecraft:bowl",
+        "count": 8
+      },
+      "request": {
+        "item": "numismatics:spur",
+        "count": 2
+      },
+      "numismatics_cost": 2,
+      "trade_id": "cooking_minecraft_farmer_bowl_for_spur"
+    },
+    {
+      "offer": {
+        "item": "society:dehydrator",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sun",
+        "count": 5
+      },
+      "numismatics_cost": 20480,
+      "trade_id": "cooking_farmer_dehydrator_for_sun"
+    },
+    {
+      "offer": {
+        "item": "create_central_kitchen:cooking_guide",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sun",
+        "count": 8
+      },
+      "second_request": {
+        "item": "society:prismatic_shard",
+        "count": 1
+      },
+      "numismatics_cost": 32768,
+      "trade_id": "cooking_farmer_cooking_guide_for_sun"
+    },
+    {
+      "offer": {
+        "item": "vintagedelight:empty_mason_jar",
+        "count": 4
+      },
+      "request": {
+        "item": "numismatics:bevel",
+        "count": 2
+      },
+      "numismatics_cost": 16,
+      "trade_id": "cooking_empty_mason_jar"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:cutting_board",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 1
+      },
+      "numismatics_cost": 64,
+      "trade_id": "cooking_cutting_board"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:iron_knife",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_iron_knife"
+    },
+    {
+      "offer": {
+        "item": "bakery:bread_knife",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_bread_knife"
+    },
+    {
+      "offer": {
+        "item": "vintagedelight:fermenting_jar",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_fermenting_jar"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:basket",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_basket"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:skillet",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 3
+      },
+      "numismatics_cost": 192,
+      "trade_id": "cooking_skillet"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:cooking_pot",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_cooking_pot"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:stove",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_stove"
+    },
+    {
+      "offer": {
+        "item": "candlelight:kitchen_sink",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_kitchen_sink"
+    },
+    {
+      "offer": {
+        "item": "bakery:small_cooking_pot",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 1
+      },
+      "numismatics_cost": 512,
+      "trade_id": "cooking_small_cooking_pot"
+    },
+    {
+      "offer": {
+        "item": "candlelight:cooking_pan",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 1
+      },
+      "numismatics_cost": 512,
+      "trade_id": "cooking_cooking_pan"
+    },
+    {
+      "offer": {
+        "item": "candlelight:cooking_pot",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 2
+      },
+      "numismatics_cost": 1024,
+      "trade_id": "cooking_master_cooking_pot"
+    },
+    {
+      "offer": {
+        "item": "brewery:brew_oven",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 4
+      },
+      "numismatics_cost": 2048,
+      "trade_id": "cooking_brew_oven"
+    }
+  ]
+}

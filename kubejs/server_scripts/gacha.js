@@ -142,6 +142,7 @@ var eRoll, ePick, ePlayer, eSrv;           // rollGlow
 var dNbt, dColor, dPlayer, dSrv, dGlow;    // useGlowDye
 var cPlayer, cIdx, cOwned, cI, cT, cMsg;   // 칭호 명령어
 var kPlayers, kI, kP, kColor;              // 무지개 틱
+var chPlayer, chTitle, chKey, chLine, chMsg;   // 채팅 칭호
 var sCount, sI, bulkMode, bulkMiss;        // 상자 개봉 반복
 var bItem, bId, bKind;                     // 블록에 대고 우클릭
 
@@ -509,6 +510,48 @@ ItemEvents.rightClicked("minecraft:magenta_dye", function (event) {
   useGlowDye(event.player, event.item.nbt);
 });
 
+// ─── 채팅에 칭호 붙이기 ─────────────────────────────────────────────────────
+//  팀 prefix 는 탭 목록과 머리 위에는 나오지만, 이 팩의 채팅 처리에서는
+//  표시되지 않습니다. 그래서 칭호를 단 사람의 채팅은 여기서 직접 그립니다.
+//  (칭호가 없는 사람은 손대지 않고 원래대로 내보냅니다)
+//
+//  같은 메시지가 수신자 수만큼 여러 번 들어올 수 있어서, 같은 틱에 온
+//  같은 메시지는 한 번만 처리합니다.
+const TITLE_CHAT_COLORS = {
+  gray: 0xaaaaaa,
+  white: 0xffffff,
+  green: 0x55ff55,
+  aqua: 0x55ffff,
+  light_purple: 0xff55ff,
+  gold: 0xffaa00,
+};
+var chLastKey = "";
+
+PlayerEvents.chat(function (event) {
+  try {
+    chPlayer = event.player;
+    if (!chPlayer) return;
+
+    chMsg = "" + event.message;
+    chKey = chPlayer.username + "|" + chMsg + "|" + event.server.tickCount;
+    if (chKey === chLastKey) return;
+    chLastKey = chKey;
+
+    chTitle = findTitle("" + chPlayer.persistentData.getString("hiTitle"));
+    if (!chTitle) return; // 칭호 없으면 원래 채팅 그대로
+
+    event.cancel();
+    chLine = Text.of("[" + chTitle.t + "] ")
+      .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
+      .bold()
+      .append(Text.of("<" + chPlayer.username + "> ").white())
+      .append(Text.of(chMsg).white());
+    event.server.tell(chLine);
+  } catch (err) {
+    console.warn("[하이의 놀이터] 채팅 칭호 표시 실패: " + err);
+  }
+});
+
 // ─── 로그인 / 리스폰 시 다시 적용 ───────────────────────────────────────────
 PlayerEvents.loggedIn(function (event) {
   applyPlayer(event.player);
@@ -572,23 +615,27 @@ function equipTitle(player, idx) {
   cPlayer = player;
   cOwned = ownedTitles(cPlayer);
 
-  if (idx === 0) {
+  // 명령어 인자는 자바 Integer 로 들어옵니다. Rhino 에서는 자바 Integer 와
+  // 자바스크립트 숫자가 === 로 절대 같지 않아서, 반드시 숫자로 바꿔야 합니다.
+  cIdx = Number(idx);
+
+  if (cIdx === 0) {
     cPlayer.persistentData.putString("hiTitle", "");
     applyPlayer(cPlayer);
     cPlayer.tell(prefixed(Text.of("칭호를 해제했습니다.").gray()));
     return 1;
   }
-  if (idx < 1 || idx > cOwned.length) {
+  if (cIdx < 1 || cIdx > cOwned.length) {
     cPlayer.tell(prefixed(Text.of("그런 번호의 칭호가 없습니다.").red()));
     return 0;
   }
 
-  cPlayer.persistentData.putString("hiTitle", cOwned[idx - 1]);
+  cPlayer.persistentData.putString("hiTitle", cOwned[cIdx - 1]);
   applyPlayer(cPlayer);
-  cT = findTitle(cOwned[idx - 1]);
+  cT = findTitle(cOwned[cIdx - 1]);
   cPlayer.tell(
     prefixed(Text.of("칭호 ").white())
-      .append(Text.of("[" + cOwned[idx - 1] + "]").color(0xffd479).bold())
+      .append(Text.of("[" + cOwned[cIdx - 1] + "]").color(0xffd479).bold())
       .append(Text.of(" 를 착용했습니다.").white())
   );
   fx(cPlayer, "playsound minecraft:block.amethyst_block.chime master @a ~ ~ ~ 1 1.4");

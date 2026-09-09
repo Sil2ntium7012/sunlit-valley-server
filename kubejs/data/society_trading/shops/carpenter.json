@@ -10,6 +10,18 @@
   "trades": [
     {
       "offer": {
+        "item": "minecraft:white_wool",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:spur",
+        "count": 50
+      },
+      "numismatics_cost": 50,
+      "trade_id": "carpenter_white_wool"
+    },
+    {
+      "offer": {
         "item": "society:building_supplies",
         "count": 1
       },
@@ -743,18 +755,6 @@
       },
       "numismatics_cost": 64,
       "trade_id": "market_orange_blossom_sapling"
-    },
-    {
-      "offer": {
-        "item": "minecraft:white_wool",
-        "count": 1
-      },
-      "request": {
-        "item": "numismatics:spur",
-        "count": 50
-      },
-      "numismatics_cost": 50,
-      "trade_id": "carpenter_white_wool"
     }
   ],
   "random_sets": [
