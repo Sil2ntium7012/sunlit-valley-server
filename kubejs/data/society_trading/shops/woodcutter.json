@@ -13,168 +13,168 @@
   "trades": [
     {
       "offer": {
-        "item": "pamhc2trees:apple_sapling",
-        "count": 1
-      },
-      "request": {
         "item": "pamhc2trees:pamapple",
-        "count": 8
-      },
-      "trade_id": "woodcutter_apple_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:banana_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:apple_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_apple_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pambanana",
-        "count": 8
-      },
-      "trade_id": "woodcutter_banana_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:cherry_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:banana_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_banana_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamcherry",
-        "count": 8
-      },
-      "trade_id": "woodcutter_cherry_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:cinnamon_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:cherry_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_cherry_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamcinnamon",
+        "count": 1
+      },
+      "request": {
+        "item": "pamhc2trees:cinnamon_sapling",
         "count": 3
       },
-      "trade_id": "woodcutter_cinnamon_sapling_for_fruit"
+      "trade_id": "woodcutter_cinnamon_fruit_for_sapling"
     },
     {
       "offer": {
-        "item": "pamhc2trees:dragonfruit_sapling",
-        "count": 1
-      },
-      "request": {
         "item": "pamhc2trees:pamdragonfruit",
-        "count": 8
-      },
-      "trade_id": "woodcutter_dragonfruit_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:hazelnut_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:dragonfruit_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_dragonfruit_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamhazelnut",
-        "count": 8
-      },
-      "trade_id": "woodcutter_hazelnut_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:lemon_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:hazelnut_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_hazelnut_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamlemon",
-        "count": 8
-      },
-      "trade_id": "woodcutter_lemon_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:lychee_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:lemon_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_lemon_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamlychee",
-        "count": 8
-      },
-      "trade_id": "woodcutter_lychee_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:mango_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:lychee_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_lychee_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pammango",
-        "count": 8
-      },
-      "trade_id": "woodcutter_mango_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:orange_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:mango_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_mango_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamorange",
-        "count": 8
-      },
-      "trade_id": "woodcutter_orange_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:passionfruit_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:orange_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_orange_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pampassionfruit",
-        "count": 8
-      },
-      "trade_id": "woodcutter_passionfruit_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:pawpaw_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:passionfruit_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_passionfruit_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pampawpaw",
-        "count": 8
-      },
-      "trade_id": "woodcutter_pawpaw_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:peach_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:pawpaw_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_pawpaw_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pampeach",
-        "count": 8
-      },
-      "trade_id": "woodcutter_peach_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:plum_sapling",
         "count": 1
       },
       "request": {
+        "item": "pamhc2trees:peach_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_peach_fruit_for_sapling"
+    },
+    {
+      "offer": {
         "item": "pamhc2trees:pamplum",
-        "count": 8
-      },
-      "trade_id": "woodcutter_plum_sapling_for_fruit"
-    },
-    {
-      "offer": {
-        "item": "pamhc2trees:starfruit_sapling",
         "count": 1
       },
       "request": {
-        "item": "pamhc2trees:pamstarfruit",
+        "item": "pamhc2trees:plum_sapling",
         "count": 8
       },
-      "trade_id": "woodcutter_starfruit_sapling_for_fruit"
+      "trade_id": "woodcutter_plum_fruit_for_sapling"
+    },
+    {
+      "offer": {
+        "item": "pamhc2trees:pamstarfruit",
+        "count": 1
+      },
+      "request": {
+        "item": "pamhc2trees:starfruit_sapling",
+        "count": 8
+      },
+      "trade_id": "woodcutter_starfruit_fruit_for_sapling"
     }
   ]
 }
