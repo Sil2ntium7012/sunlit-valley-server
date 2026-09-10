@@ -19,19 +19,19 @@
       "down_acceleration": "x1.1"
     },
     "aquaculture:iron_fishing_rod": {
-      "bar_size": "+7"
-    },
-    "aquaculture:gold_fishing_rod": {
-      "bar_size": "+10"
-    },
-    "aquaculture:diamond_fishing_rod": {
       "bar_size": "+14"
     },
+    "aquaculture:gold_fishing_rod": {
+      "bar_size": "+20"
+    },
+    "aquaculture:diamond_fishing_rod": {
+      "bar_size": "+28"
+    },
     "aquaculture:neptunium_fishing_rod": {
-      "bar_size": "+17"
+      "bar_size": "+34"
     },
     "netherdepthsupgrade:lava_fishing_rod": {
-      "bar_size": "+12"
+      "bar_size": "+24"
     },
     "society:needle_bobber": {
       "bar_size": "-24",

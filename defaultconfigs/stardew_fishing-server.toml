@@ -18,7 +18,7 @@ quality2Multiplier = 2.5
 quality3Multiplier = 4.0
 #The multiplier that is applied to the time it takes for a fish to bite after casting your rod.
 #Range: 0.0 ~ 1.0
-biteTimeMultiplier = 0.7
+biteTimeMultiplier = 0.49
 #The chance for finding a treasure chest each time you play the fishing minigame.
 #Range: 0.0 ~ 1.0
 treasureChestChance = 0.15
