@@ -209,7 +209,7 @@
     },
     {
       "offer": {
-        "item": "farmersdelight:basket",
+        "item": "farmersdelight:wooden_basket",
         "count": 1
       },
       "request": {
@@ -257,7 +257,7 @@
     },
     {
       "offer": {
-        "item": "candlelight:kitchen_sink",
+        "item": "candlelight:cobblestone_kitchen_sink",
         "count": 1
       },
       "request": {
@@ -305,7 +305,7 @@
     },
     {
       "offer": {
-        "item": "brewery:brew_oven",
+        "item": "brewery:wooden_brewingstation",
         "count": 1
       },
       "request": {
