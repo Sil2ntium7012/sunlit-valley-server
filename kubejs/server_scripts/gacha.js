@@ -145,6 +145,10 @@ var kPlayers, kI, kP, kColor;              // 무지개 틱
 var chPlayer, chTitle, chKey, chLine, chMsg;   // 채팅 칭호
 var sCount, sI, bulkMode, bulkMiss;        // 상자 개봉 반복
 var bItem, bId, bKind;                     // 블록에 대고 우클릭
+var gwList, gwI, gwArr, gwRaw;             // ownedGlows
+var agOwned, agI, agHas;                   // addGlow
+var gnG;                                   // glowName
+var sgOwned, sgIdx, sgI, sgMsg, sgName, sgCur;  // 발광 명령어
 
 // ─── 상자 아이템 NBT (상점에서 파는 것과 완전히 동일해야 함) ───
 const TITLE_BOX_NBT =
@@ -223,6 +227,44 @@ function ownedTitles(player) {
     if (oRaw[oI] && oRaw[oI].length > 0) oArr.push(oRaw[oI]);
   }
   return oArr;
+}
+
+// 보유 발광 배열 (색 코드 문자열, 무지개는 "rainbow")
+// 예전에는 염료를 쓰면 hiGlow 하나만 덮어썼기 때문에, 목록이 비어 있고
+// hiGlow 만 있는 사람은 그 색을 보유 목록의 첫 항목으로 옮겨 줍니다.
+function ownedGlows(player) {
+  gwList = "" + player.persistentData.getString("hiGlows");
+  if (!gwList || gwList.length === 0 || gwList === "null") {
+    gwList = "" + player.persistentData.getString("hiGlow");
+    if (!gwList || gwList.length === 0 || gwList === "null") return [];
+    player.persistentData.putString("hiGlows", gwList);
+  }
+  gwArr = [];
+  gwRaw = gwList.split(TITLE_SEP);
+  for (gwI = 0; gwI < gwRaw.length; gwI++) {
+    if (gwRaw[gwI] && gwRaw[gwI].length > 0) gwArr.push(gwRaw[gwI]);
+  }
+  return gwArr;
+}
+
+// 색 코드 -> 보여줄 이름
+function glowName(color) {
+  if (color === "rainbow") return "무지개";
+  gnG = findGlow(color);
+  return gnG ? gnG.n : color;
+}
+
+// 보유 목록에 추가. 이미 있으면 false
+function addGlow(player, color) {
+  agOwned = ownedGlows(player);
+  agHas = false;
+  for (agI = 0; agI < agOwned.length; agI++) {
+    if (agOwned[agI] === color) agHas = true;
+  }
+  if (agHas) return false;
+  agOwned.push(color);
+  player.persistentData.putString("hiGlows", agOwned.join(TITLE_SEP));
+  return true;
 }
 
 // ─── 팀에 칭호/발광 반영 ────────────────────────────────────────────────────
@@ -394,25 +436,37 @@ function rollGlow(player) {
   );
 }
 
-// ─── 발광 염료 사용 ─────────────────────────────────────────────────────────
-function useGlowDye(player, nbt) {
+// ─── 발광 염료 사용 = 색 "등록" ────────────────────────────────────────────
+//  염료를 우클릭하면 그 색이 계정에 영구 등록되고 바로 착용됩니다.
+//  이미 등록된 색이면 염료를 소모하지 않습니다.
+//  등록된 색은 /발광 으로 몇 번이든 다시 켜고 끌 수 있습니다.
+function useGlowDye(player, nbt, item) {
   dPlayer = player;
   dSrv = player.server;
-  dColor = nbt.getString("hiGlow");
+  dColor = "" + nbt.getString("hiGlow");
   if (!dColor || dColor.length === 0) return;
+
+  if (!addGlow(dPlayer, dColor)) {
+    dPlayer.tell(
+      prefixed(Text.of("이미 등록된 발광 색입니다 (" + glowName(dColor) + ")").gray())
+    );
+    dPlayer.tell(Text.of("      /발광 으로 착용할 수 있습니다").gray());
+    return;
+  }
+
+  if (item) item.count = item.count - 1;
 
   dPlayer.persistentData.putString("hiGlow", dColor);
   applyPlayer(dPlayer);
 
   if (dColor === "rainbow") {
-    dPlayer.tell(prefixed(Text.of("무지개 발광이 켜졌습니다!").color(0xff66ff).bold()));
+    dPlayer.tell(prefixed(Text.of("무지개 발광을 등록했습니다!").color(0xff66ff).bold()));
   } else {
-    dGlow = findGlow(dColor);
     dPlayer.tell(
-      prefixed(Text.of("발광이 켜졌습니다 (" + (dGlow ? dGlow.n : dColor) + ")").color(0x8be0a8))
+      prefixed(Text.of("발광 색 등록 (" + glowName(dColor) + ")").color(0x8be0a8))
     );
   }
-  dPlayer.tell(Text.of("      /발광 으로 끌 수 있습니다").gray());
+  dPlayer.tell(Text.of("      /발광 으로 언제든 바꾸거나 끌 수 있습니다").gray());
 
   fx(dPlayer, "particle minecraft:end_rod ~ ~1 ~ 0.4 0.8 0.4 0.05 80 force");
   fx(dPlayer, "playsound minecraft:block.beacon.activate master @a ~ ~ ~ 0.7 1.6");
@@ -499,15 +553,13 @@ for (var regI = 0; regI < GLOWS.length; regI++) {
   ItemEvents.rightClicked(GLOWS[regI].d, function (event) {
     if (event.hand == "OFF_HAND") return;
     if (!event.item.nbt || !event.item.nbt.contains("hiGlow")) return;
-    event.item.count = event.item.count - 1;
-    useGlowDye(event.player, event.item.nbt);
+    useGlowDye(event.player, event.item.nbt, event.item);
   });
 }
 ItemEvents.rightClicked("minecraft:magenta_dye", function (event) {
   if (event.hand == "OFF_HAND") return;
   if (!event.item.nbt || !event.item.nbt.contains("hiGlow")) return;
-  event.item.count = event.item.count - 1;
-  useGlowDye(event.player, event.item.nbt);
+  useGlowDye(event.player, event.item.nbt, event.item);
 });
 
 // ─── 채팅에 칭호 붙이기 ─────────────────────────────────────────────────────
@@ -642,15 +694,64 @@ function equipTitle(player, idx) {
   return 1;
 }
 
-function clearGlow(player) {
+function showGlows(player) {
   cPlayer = player;
-  if (cPlayer.persistentData.getString("hiGlow") === "") {
-    cPlayer.tell(prefixed(Text.of("켜져 있는 발광이 없습니다.").gray()));
+  sgOwned = ownedGlows(cPlayer);
+  if (sgOwned.length === 0) {
+    cPlayer.tell(prefixed(Text.of("등록된 발광 색이 없습니다.").gray()));
+    cPlayer.tell(Text.of("      발광 뽑기 상자에서 염료를 얻어 우클릭하면 등록됩니다").gray());
     return 1;
   }
-  cPlayer.persistentData.putString("hiGlow", "");
+  sgCur = "" + cPlayer.persistentData.getString("hiGlow");
+  cPlayer.tell(prefixed(Text.of("보유 발광 " + sgOwned.length + "종").white().bold()));
+  for (sgI = 0; sgI < sgOwned.length; sgI++) {
+    sgName = glowName(sgOwned[sgI]);
+    sgMsg = Text.of("  " + (sgI + 1) + ". ").darkGray();
+    if (sgOwned[sgI] === "rainbow") {
+      sgMsg = sgMsg.append(Text.of(sgName).color(0xff66ff).bold());
+    } else {
+      sgMsg = sgMsg.append(Text.of(sgName).color(0x8be0a8));
+    }
+    if (sgCur === sgOwned[sgI]) sgMsg = sgMsg.append(Text.of("  <- 착용 중").green());
+    cPlayer.tell(sgMsg);
+  }
+  cPlayer.tell(Text.of("      /발광 <번호> 로 착용, /발광 0 으로 해제").gray());
+  return 1;
+}
+
+function equipGlow(player, idx) {
+  cPlayer = player;
+  sgOwned = ownedGlows(cPlayer);
+
+  // 명령어 인자는 자바 Integer 라서 반드시 숫자로 바꿔야 === 가 동작합니다.
+  sgIdx = Number(idx);
+
+  if (sgIdx === 0) {
+    if ("" + cPlayer.persistentData.getString("hiGlow") === "") {
+      cPlayer.tell(prefixed(Text.of("켜져 있는 발광이 없습니다.").gray()));
+      return 1;
+    }
+    cPlayer.persistentData.putString("hiGlow", "");
+    applyPlayer(cPlayer);
+    cPlayer.tell(prefixed(Text.of("발광을 껐습니다.").gray()));
+    cPlayer.tell(Text.of("      /발광 <번호> 로 다시 켤 수 있습니다").gray());
+    return 1;
+  }
+  if (sgIdx < 1 || sgIdx > sgOwned.length) {
+    cPlayer.tell(prefixed(Text.of("그런 번호의 발광이 없습니다.").red()));
+    return 0;
+  }
+
+  cPlayer.persistentData.putString("hiGlow", sgOwned[sgIdx - 1]);
   applyPlayer(cPlayer);
-  cPlayer.tell(prefixed(Text.of("발광을 껐습니다.").gray()));
+  sgName = glowName(sgOwned[sgIdx - 1]);
+  if (sgOwned[sgIdx - 1] === "rainbow") {
+    cPlayer.tell(prefixed(Text.of("무지개 발광").color(0xff66ff).bold()).append(Text.of(" 을 켰습니다.").white()));
+  } else {
+    cPlayer.tell(prefixed(Text.of("발광 (" + sgName + ")").color(0x8be0a8)).append(Text.of(" 을 켰습니다.").white()));
+  }
+  fx(cPlayer, "particle minecraft:end_rod ~ ~1 ~ 0.4 0.8 0.4 0.05 60 force");
+  fx(cPlayer, "playsound minecraft:block.beacon.activate master @a ~ ~ ~ 0.7 1.6");
   return 1;
 }
 
@@ -687,8 +788,17 @@ ServerEvents.commandRegistry(function (event) {
       .literal("발광")
       .requires(anyone)
       .executes(function (ctx) {
-        return ctx.source.player ? clearGlow(ctx.source.player) : 0;
+        return ctx.source.player ? showGlows(ctx.source.player) : 0;
       })
+      .then(
+        event.commands
+          .argument("번호", event.arguments.INTEGER.create(event))
+          .executes(function (ctx) {
+            return ctx.source.player
+              ? equipGlow(ctx.source.player, event.arguments.INTEGER.getResult(ctx, "번호"))
+              : 0;
+          })
+      )
   );
 });
 
@@ -820,6 +930,7 @@ function resetPlayer(target, src) {
   rsPlayer.persistentData.putString("hiTitles", "");
   rsPlayer.persistentData.putString("hiTitle", "");
   rsPlayer.persistentData.putString("hiGlow", "");
+  rsPlayer.persistentData.putString("hiGlows", "");
   applyPlayer(rsPlayer);
   rsPlayer.tell(prefixed(Text.of("칭호와 발광이 모두 초기화되었습니다.").gray()));
   tellSrc(src, Text.of(rsPlayer.username + " 의 칭호/발광 전부 초기화").green());
