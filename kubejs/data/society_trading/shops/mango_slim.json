@@ -13,6 +13,29 @@
   "trades": [
     {
       "offer": {
+        "item": "minecraft:cooked_beef",
+        "count": 1
+      },
+      "request": {
+        "item": "minecraft:oak_log",
+        "count": 2
+      },
+      "trade_id": "mango_cooked_beef"
+    },
+    {
+      "offer": {
+        "item": "society:magic_rope",
+        "count": 1
+      },
+      "request": {
+        "item": "minecraft:oak_log",
+        "count": 64
+      },
+      "limit": 2,
+      "trade_id": "mango_magic_rope"
+    },
+    {
+      "offer": {
         "item": "pipez:item_pipe",
         "count": 8
       },
