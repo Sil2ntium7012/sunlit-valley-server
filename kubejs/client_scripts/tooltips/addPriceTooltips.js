@@ -1,13 +1,13 @@
-const formatNumber = (number, quality, doubled) => {
-  let value;
+const formatNumber = (number, quality, doubled, meridian) => {
+  let mult = 1;
   if (quality) {
-    if (quality == 1.0) value = Math.round(number * (doubled ? 1.5 : 1.25));
-    if (quality == 2.0) value = Math.round(number * (doubled ? 2 : 1.5));
-    if (quality == 3.0) value = Math.round(number * (doubled ? 3 : 2));
-  } else {
-    value = number;
+    if (quality == 1.0) mult = doubled ? 1.5 : 1.25;
+    if (quality == 2.0) mult = doubled ? 2 : 1.5;
+    if (quality == 3.0) mult = doubled ? 3 : 2;
   }
-  return global.formatPrice(value);
+  // [블루길빛 자오선] 등급으로 늘어난 몫만 3배
+  if (meridian) mult = 1 + (mult - 1) * global.HI_MERIDIAN_MULT;
+  return global.formatPrice(Math.round(number * mult));
 };
 
 const getStackBonusValueTooltips = (text, number, item, attribute, quality) => {
@@ -15,18 +15,20 @@ const getStackBonusValueTooltips = (text, number, item, attribute, quality) => {
   let clientStages = Client.player.stages;
   let bonusTooltips = [];
   let qualityDoubled = false;
+  let meridian = false;
   let attributeMult = global.getAttributeMultiplier(
     Client.player.nbt.Attributes,
     `shippingbin:${attribute}_sell_multiplier`
   );
   let hasMultipliers = attributeMult > 1;
   if (
+    quality > 0 &&
     clientStages.has("bluegill_meridian") &&
-    item.id == "aquaculture:bluegill"
+    global.hiRawFish.has(item.id)
   ) {
     hasMultipliers = true;
-    // [가격 조정] 생선 원물 3배에 맞춰 이 책 보정치도 3배 (666 -> 1998)
-    value = 1998;
+    // [변경] 블루길 666 고정 -> "물고기 등급 보너스 3배"
+    meridian = true;
     bonusTooltips.push(
       Text.translatable("item.society.bluegill_meridian.price_modifier").aqua()
     );
@@ -93,7 +95,7 @@ const getStackBonusValueTooltips = (text, number, item, attribute, quality) => {
   text.add(1, [
     Text.translatable(
       "tooltip.society.coins",
-      `${formatNumber(value, quality, qualityDoubled)}`
+      `${formatNumber(value, quality, qualityDoubled, meridian)}`
     ).white(),
     Text.of(" "),
     Text.translatable("tooltip.society.stack_value")

@@ -1757,6 +1757,11 @@ global.fish.forEach((fish) => {
 for (let i = 0; i < rawFishCount; i++) {
   global.fish[i].value = global.fish[i].value * RAW_FISH_PRICE_MULTIPLIER;
 }
+// [블루길빛 자오선] "모든 물고기 가격 3배" 책이 참조하는 원물 목록.
+// rawFishCount 이후는 알(roe)이라 제외합니다.
+global.hiRawFish = new Set();
+for (let i = 0; i < rawFishCount; i++) global.hiRawFish.add(global.fish[i].item);
+global.HI_MERIDIAN_MULT = 3;
 // ─────────────────────────────────────────────────────────────────────────────
 
 global.miscAdventurer = [

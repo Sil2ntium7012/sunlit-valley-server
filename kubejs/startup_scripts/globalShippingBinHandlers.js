@@ -121,11 +121,15 @@ global.processShippingBinInventory = (
       }
       itemValue = calculateQualityValue(trade.value, quality, doubleQuality);
       if (
+        quality &&
+        quality > 0 &&
         stages.toString().includes("bluegill_meridian") &&
-        slotItem.id == "aquaculture:bluegill"
+        global.hiRawFish.has(slotItem.id)
       ) {
-        // [가격 조정] 생선 원물이 3배가 됐으므로 이 책 보정치도 같이 3배 (666 -> 1998)
-        itemValue = calculateQualityValue(1998, quality);
+        // [변경] 블루길 666 고정 -> "물고기 등급 보너스 3배"
+        // 등급으로 늘어난 몫(itemValue - 기본가)만 3배로 키웁니다.
+        // 예) 100원 물고기의 이리듐 등급 200원 -> 100 + 100*3 = 400원
+        itemValue = trade.value + (itemValue - trade.value) * global.HI_MERIDIAN_MULT;
       }
       if (
         stages.toString().includes("phenomenology_of_treasure") &&

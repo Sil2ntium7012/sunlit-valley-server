@@ -223,6 +223,17 @@
     },
     {
       "offer": {
+        "item": "society:needle_bobber",
+        "count": 1
+      },
+      "request": {
+        "item": "society:heart_of_neptunium",
+        "count": 4
+      },
+      "trade_id": "fisherman_needle_bobber_for_4_hearts"
+    },
+    {
+      "offer": {
         "item": "society:net_bobber",
         "count": 1
       },
@@ -233,6 +244,17 @@
       "stage_required": "fishing_mastery",
       "unlock_description": "jei.society_trading.fishing_mastery_unlocked",
       "trade_id": "fisherman_net_bobber_for_heart_of_neptunium"
+    },
+    {
+      "offer": {
+        "item": "society:net_bobber",
+        "count": 1
+      },
+      "request": {
+        "item": "society:heart_of_neptunium",
+        "count": 4
+      },
+      "trade_id": "fisherman_net_bobber_for_4_hearts"
     },
     {
       "offer": {
