@@ -1,4 +1,5 @@
 {
+  "replace": true,
   "modifiers": {
     "stardew_fishing:trap_bobber": {
       "line_strength": "x1.33"
