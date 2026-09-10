@@ -203,7 +203,12 @@ ItemEvents.entityInteracted((e) => {
     if (item.id == 'easy_npc_config_ui:easy_npc_wand') return;
     if (!npcIds.includes(target.type)) return;
     if (hand == "MAIN_HAND") {
+        // 하이의 놀이터 / 망고 / 요리 / 나무꾼 처럼 우리가 세운 NPC 는
+        // "dialog.npc.<id>.name" 형태의 이름이 아니라서 여기서 처리하면 안 됩니다.
+        // 그냥 넘겨주면 society_trading 이 알아서 상점을 열어줍니다.
+        if (!target.nbt || !target.nbt.contains("CustomName")) return;
         let npcId = getNpcKey(target.nbt.CustomName.toString())
+        if (!npcId || !dialogLengths[npcId]) return;
         handleNpc(e, npcId, level, server, target, player, item)
     }
 });

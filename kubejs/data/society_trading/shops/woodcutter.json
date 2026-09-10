@@ -39,7 +39,7 @@
         "count": 1
       },
       "request": {
-        "item": "pamhc2trees:appleitem",
+        "item": "minecraft:apple",
         "count": 8
       },
       "trade_id": "woodcutter_apple_sapling_for_fruit"

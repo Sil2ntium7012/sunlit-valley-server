@@ -269,30 +269,6 @@
     },
     {
       "offer": {
-        "item": "bakery:small_cooking_pot",
-        "count": 1
-      },
-      "request": {
-        "item": "numismatics:crown",
-        "count": 1
-      },
-      "numismatics_cost": 512,
-      "trade_id": "cooking_small_cooking_pot_slim"
-    },
-    {
-      "offer": {
-        "item": "candlelight:cooking_pan",
-        "count": 1
-      },
-      "request": {
-        "item": "numismatics:crown",
-        "count": 1
-      },
-      "numismatics_cost": 512,
-      "trade_id": "cooking_cooking_pan_slim"
-    },
-    {
-      "offer": {
         "item": "candlelight:cooking_pot",
         "count": 1
       },
