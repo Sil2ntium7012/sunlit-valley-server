@@ -21,7 +21,7 @@
         "count": 2
       },
       "numismatics_cost": 128,
-      "trade_id": "cooking_market_rice"
+      "trade_id": "cooking_market_rice_slim"
     },
     {
       "offer": {
@@ -33,7 +33,7 @@
         "count": 12
       },
       "numismatics_cost": 96,
-      "trade_id": "cooking_market_sugar_cane"
+      "trade_id": "cooking_market_sugar_cane_slim"
     },
     {
       "offer": {
@@ -45,7 +45,7 @@
         "count": 1
       },
       "numismatics_cost": 64,
-      "trade_id": "cooking_farmer_alpine_salt_for_cog"
+      "trade_id": "cooking_farmer_alpine_salt_for_cog_slim"
     },
     {
       "offer": {
@@ -57,7 +57,7 @@
         "count": 1
       },
       "numismatics_cost": 8,
-      "trade_id": "cooking_farmer_sugar_for_sprocket"
+      "trade_id": "cooking_farmer_sugar_for_sprocket_slim"
     },
     {
       "offer": {
@@ -69,7 +69,7 @@
         "count": 2
       },
       "numismatics_cost": 2,
-      "trade_id": "cooking_farmer_glass_bottle_for_spur"
+      "trade_id": "cooking_farmer_glass_bottle_for_spur_slim"
     },
     {
       "offer": {
@@ -81,7 +81,7 @@
         "count": 1
       },
       "numismatics_cost": 8,
-      "trade_id": "cooking_farmer_glass_bottle_for_sprocket"
+      "trade_id": "cooking_farmer_glass_bottle_for_sprocket_slim"
     },
     {
       "offer": {
@@ -93,7 +93,7 @@
         "count": 1
       },
       "numismatics_cost": 1,
-      "trade_id": "cooking_farmer_wine_bottle_for_spur"
+      "trade_id": "cooking_farmer_wine_bottle_for_spur_slim"
     },
     {
       "offer": {
@@ -105,7 +105,7 @@
         "count": 2
       },
       "numismatics_cost": 2,
-      "trade_id": "cooking_minecraft_farmer_beer_mug_for_spur"
+      "trade_id": "cooking_minecraft_farmer_beer_mug_for_spur_slim"
     },
     {
       "offer": {
@@ -117,7 +117,7 @@
         "count": 2
       },
       "numismatics_cost": 2,
-      "trade_id": "cooking_minecraft_farmer_bowl_for_spur"
+      "trade_id": "cooking_minecraft_farmer_bowl_for_spur_slim"
     },
     {
       "offer": {
@@ -129,7 +129,7 @@
         "count": 5
       },
       "numismatics_cost": 20480,
-      "trade_id": "cooking_farmer_dehydrator_for_sun"
+      "trade_id": "cooking_farmer_dehydrator_for_sun_slim"
     },
     {
       "offer": {
@@ -145,7 +145,7 @@
         "count": 1
       },
       "numismatics_cost": 32768,
-      "trade_id": "cooking_farmer_cooking_guide_for_sun"
+      "trade_id": "cooking_farmer_cooking_guide_for_sun_slim"
     },
     {
       "offer": {
@@ -157,7 +157,7 @@
         "count": 2
       },
       "numismatics_cost": 16,
-      "trade_id": "cooking_empty_mason_jar"
+      "trade_id": "cooking_empty_mason_jar_slim"
     },
     {
       "offer": {
@@ -169,7 +169,7 @@
         "count": 1
       },
       "numismatics_cost": 64,
-      "trade_id": "cooking_cutting_board"
+      "trade_id": "cooking_cutting_board_slim"
     },
     {
       "offer": {
@@ -181,7 +181,7 @@
         "count": 2
       },
       "numismatics_cost": 128,
-      "trade_id": "cooking_iron_knife"
+      "trade_id": "cooking_iron_knife_slim"
     },
     {
       "offer": {
@@ -193,7 +193,7 @@
         "count": 2
       },
       "numismatics_cost": 128,
-      "trade_id": "cooking_bread_knife"
+      "trade_id": "cooking_bread_knife_slim"
     },
     {
       "offer": {
@@ -205,7 +205,7 @@
         "count": 2
       },
       "numismatics_cost": 128,
-      "trade_id": "cooking_fermenting_jar"
+      "trade_id": "cooking_fermenting_jar_slim"
     },
     {
       "offer": {
@@ -217,7 +217,7 @@
         "count": 2
       },
       "numismatics_cost": 128,
-      "trade_id": "cooking_basket"
+      "trade_id": "cooking_basket_slim"
     },
     {
       "offer": {
@@ -229,7 +229,7 @@
         "count": 3
       },
       "numismatics_cost": 192,
-      "trade_id": "cooking_skillet"
+      "trade_id": "cooking_skillet_slim"
     },
     {
       "offer": {
@@ -241,7 +241,7 @@
         "count": 4
       },
       "numismatics_cost": 256,
-      "trade_id": "cooking_cooking_pot"
+      "trade_id": "cooking_cooking_pot_slim"
     },
     {
       "offer": {
@@ -253,7 +253,7 @@
         "count": 4
       },
       "numismatics_cost": 256,
-      "trade_id": "cooking_stove"
+      "trade_id": "cooking_stove_slim"
     },
     {
       "offer": {
@@ -265,7 +265,7 @@
         "count": 4
       },
       "numismatics_cost": 256,
-      "trade_id": "cooking_kitchen_sink"
+      "trade_id": "cooking_kitchen_sink_slim"
     },
     {
       "offer": {
@@ -277,7 +277,7 @@
         "count": 1
       },
       "numismatics_cost": 512,
-      "trade_id": "cooking_small_cooking_pot"
+      "trade_id": "cooking_small_cooking_pot_slim"
     },
     {
       "offer": {
@@ -289,7 +289,7 @@
         "count": 1
       },
       "numismatics_cost": 512,
-      "trade_id": "cooking_cooking_pan"
+      "trade_id": "cooking_cooking_pan_slim"
     },
     {
       "offer": {
@@ -301,7 +301,7 @@
         "count": 2
       },
       "numismatics_cost": 1024,
-      "trade_id": "cooking_master_cooking_pot"
+      "trade_id": "cooking_master_cooking_pot_slim"
     },
     {
       "offer": {
@@ -313,7 +313,7 @@
         "count": 4
       },
       "numismatics_cost": 2048,
-      "trade_id": "cooking_brew_oven"
+      "trade_id": "cooking_brew_oven_slim"
     }
   ]
 }

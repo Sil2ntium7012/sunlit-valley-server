@@ -20,7 +20,7 @@
         "item": "minecraft:oak_log",
         "count": 2
       },
-      "trade_id": "mango_cooked_beef"
+      "trade_id": "mango_cooked_beef_slim"
     },
     {
       "offer": {
@@ -32,7 +32,7 @@
         "count": 64
       },
       "limit": 2,
-      "trade_id": "mango_magic_rope"
+      "trade_id": "mango_magic_rope_slim"
     },
     {
       "offer": {
