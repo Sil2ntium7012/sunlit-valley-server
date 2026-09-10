@@ -4,7 +4,7 @@
   "texture": "dialog:textures/portraits/shepherd",
   "villager_profession": "shepherd",
   "stage_required": "invited_shepherd",
-  "selector_weight": -97,
+  "selector_weight": -95,
   "jei_catalyst": {
     "item": "society:villager",
     "nbt": "{type:{id:\"society:shepherd\"}}"
@@ -246,11 +246,14 @@
       },
       "request": {
         "item": "numismatics:sun",
-        "count": 48
+        "count": 64
       },
-      "numismatics_cost": 196608,
+      "numismatics_cost": 409600,
       "trade_id": "shepherd_friendship_necklace_for_sun",
-      "limit": 3
+      "second_request": {
+        "item": "numismatics:sun",
+        "count": 36
+      }
     }
   ]
 }

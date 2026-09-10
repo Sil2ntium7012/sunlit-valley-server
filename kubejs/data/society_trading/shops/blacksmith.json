@@ -6,7 +6,7 @@
     "item": "society:villager",
     "nbt": "{type:{id:\"society:blacksmith\"}}"
   },
-  "selector_weight": -98,
+  "selector_weight": -96,
   "villager_profession": "toolsmith",
   "stage_required": "invited_blacksmith",
   "trades": [

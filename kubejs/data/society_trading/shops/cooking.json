@@ -6,9 +6,9 @@
   "entity_data": "cooking_shop",
   "hidden_from_selector": false,
   "hidden_from_auto_trader": true,
-  "selector_weight": 902,
+  "selector_weight": -98,
   "jei_catalyst": {
-    "item": "minecraft:villager_spawn_egg"
+    "item": "farmersdelight:cooking_pot"
   },
   "trades": [
     {

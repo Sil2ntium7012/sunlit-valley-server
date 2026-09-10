@@ -6,9 +6,9 @@
   "entity_data": "woodcutter_shop",
   "hidden_from_selector": false,
   "hidden_from_auto_trader": true,
-  "selector_weight": 903,
+  "selector_weight": -97,
   "jei_catalyst": {
-    "item": "minecraft:villager_spawn_egg"
+    "item": "minecraft:oak_sapling"
   },
   "trades": [
     {

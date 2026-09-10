@@ -5,7 +5,7 @@
   "jei_catalyst": {
     "item": "minecraft:leather_boots"
   },
-  "selector_weight": 1,
+  "selector_weight": 2,
   "trades": [
     {
       "offer": {

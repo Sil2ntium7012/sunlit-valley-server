@@ -6,7 +6,7 @@
     "item": "society:villager",
     "nbt": "{type:{id:\"society:carpenter\"}}"
   },
-  "selector_weight": -96,
+  "selector_weight": -94,
   "trades": [
     {
       "offer": {

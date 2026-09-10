@@ -6,9 +6,9 @@
   "entity_data": "mango_shop",
   "hidden_from_selector": false,
   "hidden_from_auto_trader": true,
-  "selector_weight": 901,
+  "selector_weight": 1,
   "jei_catalyst": {
-    "item": "minecraft:villager_spawn_egg"
+    "item": "pamhc2trees:mangoitem"
   },
   "trades": [
     {
