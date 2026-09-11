@@ -1757,7 +1757,10 @@ global.fish.forEach((fish) => {
 for (let i = 0; i < rawFishCount; i++) {
   global.fish[i].value = global.fish[i].value * RAW_FISH_PRICE_MULTIPLIER;
 }
-// [블루길빛 자오선] "모든 물고기 가격 3배" 책이 참조하는 원물 목록.
+// [블루길빛 자오선] 이 책은 블루길만 오르는 게 아니라, 생선 원물 전체가
+// "등급(별)으로 받는 추가 금액"을 3배로 받습니다. 기본가는 그대로입니다.
+//   예) 블루길 48원, 이리듐 등급 96원 -> 48 + (96-48)*3 = 192원
+//   별이 없는 물고기는 등급 차액이 0이라 변화 없습니다.
 // rawFishCount 이후는 알(roe)이라 제외합니다.
 global.hiRawFish = new Set();
 for (let i = 0; i < rawFishCount; i++) global.hiRawFish.add(global.fish[i].item);

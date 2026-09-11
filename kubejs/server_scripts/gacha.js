@@ -28,6 +28,7 @@ const TITLE_SEP = ";";
 
 const RAINBOW_TICK = 4;            // 무지개 색 바뀌는 주기(틱)
 const GLOW_DURATION = 1000000;     // 발광 지속(초). 로그인마다 갱신
+const TITLE_IN_TAB = false;        // 탭 목록/머리 위에 칭호 표시 여부
 // ────────────────────────────────────────────────────────────────────────────
 
 // ─── 칭호 목록 ───  t: 표시 글자, c: 색, w: 가중치(클수록 잘 나옴)
@@ -277,9 +278,12 @@ function applyPlayer(player) {
     aSrv.runCommandSilent("team join " + aTeam + " " + player.username);
 
     // 칭호 -> prefix
+    // TITLE_IN_TAB = false 면 탭 목록/머리 위에 칭호를 붙이지 않습니다.
+    // (칭호가 붙으면 닉네임이 길어져서 탭의 핑 표시와 겹칩니다)
+    // 칭호는 채팅에서 보여줍니다. 탭에도 다시 넣고 싶으면 true 로 바꾸세요.
     aTitleId = player.persistentData.getString("hiTitle");
     aTitle = aTitleId ? findTitle(aTitleId) : null;
-    if (aTitle) {
+    if (aTitle && TITLE_IN_TAB) {
       aSrv.runCommandSilent(
         "team modify " + aTeam + ' prefix {"text":"[' + aTitle.t + '] ","color":"' + aTitle.c + '","bold":true}'
       );
@@ -584,15 +588,21 @@ PlayerEvents.chat(function (event) {
     chPlayer = event.player;
     if (!chPlayer) return;
 
+    chTitle = findTitle("" + chPlayer.persistentData.getString("hiTitle"));
+    if (!chTitle) return; // 칭호 없으면 원래 채팅 그대로
+
+    // 이 이벤트는 "수신자 1명당 1번" 호출됩니다.
+    // 그래서 취소는 매번 해야 모든 사람에게서 원본 줄이 사라지고,
+    // 우리가 새로 그린 줄은 첫 호출 때 딱 한 번만 보냅니다.
+    // (예전 코드는 중복 판정에서 먼저 return 해버려서, 첫 사람 빼고는
+    //  전부 원본 채팅이 그대로 보였습니다.)
+    event.cancel();
+
     chMsg = "" + event.message;
     chKey = chPlayer.username + "|" + chMsg + "|" + event.server.tickCount;
     if (chKey === chLastKey) return;
     chLastKey = chKey;
 
-    chTitle = findTitle("" + chPlayer.persistentData.getString("hiTitle"));
-    if (!chTitle) return; // 칭호 없으면 원래 채팅 그대로
-
-    event.cancel();
     chLine = Text.of("[" + chTitle.t + "] ")
       .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
       .bold()
