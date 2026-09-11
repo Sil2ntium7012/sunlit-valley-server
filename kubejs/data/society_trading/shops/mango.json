@@ -24,18 +24,6 @@
     },
     {
       "offer": {
-        "item": "society:magic_rope",
-        "count": 1
-      },
-      "request": {
-        "item": "minecraft:oak_log",
-        "count": 64
-      },
-      "limit": 2,
-      "trade_id": "mango_magic_rope"
-    },
-    {
-      "offer": {
         "item": "pipez:item_pipe",
         "count": 8
       },
@@ -88,18 +76,6 @@
         "count": 1
       },
       "trade_id": "mango_artifact_trove"
-    },
-    {
-      "offer": {
-        "item": "society:auto_petter",
-        "count": 1
-      },
-      "request": {
-        "item": "minecraft:gold_nugget",
-        "count": 5,
-        "nbt": "{hiCoin:1b,display:{Name:'{\"text\":\"출석 코인\",\"italic\":false,\"color\":\"gold\",\"bold\":true}',Lore:['{\"text\":\"하루 1시간 접속 보상\",\"italic\":false,\"color\":\"gray\"}','{\"text\":\"5개를 모아 망고에게 가져가세요\",\"italic\":false,\"color\":\"dark_gray\"}']}}"
-      },
-      "trade_id": "mango_auto_petter"
     }
   ]
 }
