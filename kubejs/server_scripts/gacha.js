@@ -584,6 +584,12 @@ const TITLE_CHAT_COLORS = {
 var chLastKey = "";
 
 PlayerEvents.chat(function (event) {
+  // ★ event.cancel() 은 "예외(EventExit)를 던져서" 핸들러를 빠져나갑니다.
+  //   그래서 반드시 맨 마지막에, 그리고 try/catch 바깥에서 불러야 합니다.
+  //   - 위쪽에서 부르면 그 아래 코드가 한 줄도 실행되지 않습니다.
+  //   - try 안에서 부르면 catch 가 EventExit 을 삼켜 취소조차 안 먹습니다.
+  //   (실제로 그렇게 해서 "채팅 칭호 표시 실패: EventExit" 로그만 남았습니다)
+  var doCancel = false;
   try {
     chPlayer = event.player;
     if (!chPlayer) return;
@@ -591,27 +597,28 @@ PlayerEvents.chat(function (event) {
     chTitle = findTitle("" + chPlayer.persistentData.getString("hiTitle"));
     if (!chTitle) return; // 칭호 없으면 원래 채팅 그대로
 
-    // 이 이벤트는 "수신자 1명당 1번" 호출됩니다.
-    // 그래서 취소는 매번 해야 모든 사람에게서 원본 줄이 사라지고,
-    // 우리가 새로 그린 줄은 첫 호출 때 딱 한 번만 보냅니다.
-    // (예전 코드는 중복 판정에서 먼저 return 해버려서, 첫 사람 빼고는
-    //  전부 원본 채팅이 그대로 보였습니다.)
-    event.cancel();
+    // 이 이벤트는 수신자 1명당 1번 호출됩니다.
+    // 원본 줄은 매번 지워야 하고(→ 아래 cancel), 우리가 새로 그린 줄은
+    // 첫 호출 때 한 번만 보냅니다.
+    doCancel = true;
 
     chMsg = "" + event.message;
     chKey = chPlayer.username + "|" + chMsg + "|" + event.server.tickCount;
-    if (chKey === chLastKey) return;
-    chLastKey = chKey;
-
-    chLine = Text.of("[" + chTitle.t + "] ")
-      .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
-      .bold()
-      .append(Text.of("<" + chPlayer.username + "> ").white())
-      .append(Text.of(chMsg).white());
-    event.server.tell(chLine);
+    if (chKey !== chLastKey) {
+      chLastKey = chKey;
+      chLine = Text.of("[" + chTitle.t + "] ")
+        .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
+        .bold()
+        .append(Text.of("<" + chPlayer.username + "> ").white())
+        .append(Text.of(chMsg).white());
+      event.server.tell(chLine);
+    }
   } catch (err) {
+    // 여기서 실패하면 원본 채팅이라도 그대로 보이게 둡니다(취소하지 않음).
     console.warn("[하이의 놀이터] 채팅 칭호 표시 실패: " + err);
+    return;
   }
+  if (doCancel) event.cancel(); // try 바깥 — EventExit 이 KubeJS 로 전파돼야 함
 });
 
 // ─── 로그인 / 리스폰 시 다시 적용 ───────────────────────────────────────────

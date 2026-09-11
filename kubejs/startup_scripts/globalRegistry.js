@@ -1763,8 +1763,16 @@ for (let i = 0; i < rawFishCount; i++) {
 //   별이 없는 물고기는 등급 차액이 0이라 변화 없습니다.
 // rawFishCount 이후는 알(roe)이라 제외합니다.
 global.hiRawFish = new Set();
-for (let i = 0; i < rawFishCount; i++) global.hiRawFish.add(global.fish[i].item);
+// id 는 Java 객체일 수 있어 String() 으로 통일합니다. 이걸 빼먹으면
+// Set.has() 가 엄격 비교라 영원히 false 가 됩니다.
+for (let i = 0; i < rawFishCount; i++)
+  global.hiRawFish.add(String(global.fish[i].item));
 global.HI_MERIDIAN_MULT = 3;
+// 서버 로그 확인용. 이 줄이 안 보이거나 0종이면 자오선은 절대 작동하지 않습니다.
+console.info(
+  "[하이의 놀이터] 자오선 대상 생선 " + global.hiRawFish.size + "종 등록 (배율 " +
+  global.HI_MERIDIAN_MULT + "배), 예: " + String(global.fish[0].item)
+);
 // ─────────────────────────────────────────────────────────────────────────────
 
 global.miscAdventurer = [

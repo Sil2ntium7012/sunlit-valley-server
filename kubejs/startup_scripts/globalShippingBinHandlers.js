@@ -124,7 +124,7 @@ global.processShippingBinInventory = (
         quality &&
         quality > 0 &&
         stages.toString().includes("bluegill_meridian") &&
-        global.hiRawFish.has(slotItem.id)
+        global.hiRawFish.has(String(slotItem.id))
       ) {
         // [변경] 블루길 666 고정 -> "물고기 등급 보너스 3배"
         // 등급으로 늘어난 몫(itemValue - 기본가)만 3배로 키웁니다.

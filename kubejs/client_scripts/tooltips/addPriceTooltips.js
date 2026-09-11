@@ -24,7 +24,7 @@ const getStackBonusValueTooltips = (text, number, item, attribute, quality) => {
   if (
     quality > 0 &&
     clientStages.has("bluegill_meridian") &&
-    global.hiRawFish.has(item.id)
+    global.hiRawFish.has(String(item.id))
   ) {
     hasMultipliers = true;
     // [변경] 블루길 666 고정 -> "물고기 등급 보너스 3배"
