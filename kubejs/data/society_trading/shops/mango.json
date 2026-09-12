@@ -5,7 +5,6 @@
   "entity": "easy_npc:humanoid",
   "entity_data": "mango_shop",
   "hidden_from_selector": false,
-  "hidden_from_auto_trader": true,
   "selector_weight": 1,
   "jei_catalyst": {
     "item": "pamhc2trees:mangoitem"

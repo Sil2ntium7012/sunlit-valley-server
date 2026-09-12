@@ -606,9 +606,15 @@ PlayerEvents.chat(function (event) {
     chKey = chPlayer.username + "|" + chMsg + "|" + event.server.tickCount;
     if (chKey !== chLastKey) {
       chLastKey = chKey;
-      chLine = Text.of("[" + chTitle.t + "] ")
-        .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
-        .bold()
+      // 마인크래프트 컴포넌트는 자식이 부모 서식을 물려받습니다.
+      // [칭호] 조각에 .bold() 를 걸고 거기에 append 하면 닉네임과 메시지까지
+      // 같이 굵어지므로, 빈 루트에 세 조각을 나란히 붙입니다.
+      chLine = Text.of("")
+        .append(
+          Text.of("[" + chTitle.t + "] ")
+            .color(TITLE_CHAT_COLORS[chTitle.c] || 0xffd479)
+            .bold()
+        )
         .append(Text.of("<" + chPlayer.username + "> ").white())
         .append(Text.of(chMsg).white());
       event.server.tell(chLine);

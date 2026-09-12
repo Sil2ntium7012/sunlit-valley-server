@@ -5,7 +5,6 @@
   "entity": "easy_npc:humanoid_slim",
   "entity_data": "cooking_shop",
   "hidden_from_selector": true,
-  "hidden_from_auto_trader": true,
   "selector_weight": -98,
   "jei_catalyst": {
     "item": "farmersdelight:cooking_pot"
