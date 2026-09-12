@@ -5,15 +5,15 @@
 		#The speed at which items are transferred
 		#A value of 1 means every tick
 		#Range: > 1
-		no_upgrade = 20
+		no_upgrade = 1
 		#The speed at which items are transferred
 		#A value of 1 means every tick
 		#Range: > 1
-		basic = 20
+		basic = 1
 		#The speed at which items are transferred
 		#A value of 1 means every tick
 		#Range: > 1
-		improved = 20
+		improved = 1
 		#The speed at which items are transferred
 		#A value of 1 means every tick
 		#Range: > 1
@@ -21,24 +21,24 @@
 		#The speed at which items are transferred
 		#A value of 1 means every tick
 		#Range: > 1
-		ultimate = 20
+		ultimate = 1
 
 	[item_pipe.amount]
 		#The amount of items transferred
 		#Range: > 1
-		no_upgrade = 1
+		no_upgrade = 4
 		#The amount of items transferred
 		#Range: > 1
-		basic = 16
+		basic = 8
 		#The amount of items transferred
 		#Range: > 1
-		improved = 16
+		improved = 12
 		#The amount of items transferred
 		#Range: > 1
-		advanced = 1
+		advanced = 16
 		#The amount of items transferred
 		#Range: > 1
-		ultimate = 16
+		ultimate = 24
 
 [fluid_pipe]
 
