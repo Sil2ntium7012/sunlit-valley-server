@@ -12,14 +12,16 @@
 const STARTER_FLAG = "hiStarterKit"; // persistentData 키
 const STARTER_DELAY_TICKS = 40; // 접속 직후엔 인벤토리가 아직 준비 전일 수 있어 2초 뒤 지급
 
-// 지급 목록. 인벤토리가 꽉 차 있으면 발밑에 떨어집니다.
+// 지급 목록. [아이템 ID, 개수] 이며 개수를 빼면 1개입니다.
+// 인벤토리가 꽉 차 있으면 발밑에 떨어집니다.
 const STARTER_ITEMS = [
-  "minecraft:iron_pickaxe",
-  "minecraft:iron_axe",
-  "minecraft:iron_shovel",
-  "minecraft:iron_hoe",
-  "dew_drop_watering_cans:iron_watering_can",
-  "sophisticatedbackpacks:backpack",
+  ["minecraft:iron_pickaxe"],
+  ["minecraft:iron_axe"],
+  ["minecraft:iron_shovel"],
+  ["minecraft:iron_hoe"],
+  ["dew_drop_watering_cans:iron_watering_can"],
+  ["sophisticatedbackpacks:backpack"],
+  ["minecraft:cooked_beef", 32],
 ];
 
 PlayerEvents.loggedIn(function (event) {
@@ -41,9 +43,11 @@ PlayerEvents.loggedIn(function (event) {
       if (!p) return;
 
       let given = 0;
-      STARTER_ITEMS.forEach(function (id) {
+      STARTER_ITEMS.forEach(function (entry) {
+        let id = entry[0];
+        let count = entry.length > 1 ? entry[1] : 1;
         try {
-          p.give(Item.of(id));
+          p.give(Item.of(id, count));
           given++;
         } catch (e) {
           console.warn("[하이의 놀이터] 시작 물품 지급 실패 (" + id + "): " + e);
@@ -56,7 +60,7 @@ PlayerEvents.loggedIn(function (event) {
           .append(Text.of("환영합니다! 시작 물품을 드렸어요.").white())
       );
       p.tell(
-        Text.of("  철 곡괭이 · 도끼 · 삽 · 괭이, 철 물뿌리개, 배낭").gray()
+        Text.of("  철 곡괭이 · 도끼 · 삽 · 괭이, 철 물뿌리개, 배낭, 스테이크 32개").gray()
       );
 
       if (given < STARTER_ITEMS.length) {

@@ -120,6 +120,18 @@
     },
     {
       "offer": {
+        "item": "society:dehydrator",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:sun",
+        "count": 5
+      },
+      "numismatics_cost": 20480,
+      "trade_id": "cooking_farmer_dehydrator_for_sun"
+    },
+    {
+      "offer": {
         "item": "create_central_kitchen:cooking_guide",
         "count": 1
       },
@@ -145,6 +157,138 @@
       },
       "numismatics_cost": 16,
       "trade_id": "cooking_empty_mason_jar"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:cutting_board",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 1
+      },
+      "numismatics_cost": 64,
+      "trade_id": "cooking_cutting_board"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:iron_knife",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_iron_knife"
+    },
+    {
+      "offer": {
+        "item": "bakery:bread_knife",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_bread_knife"
+    },
+    {
+      "offer": {
+        "item": "vintagedelight:fermenting_jar",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_fermenting_jar"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:wooden_basket",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 2
+      },
+      "numismatics_cost": 128,
+      "trade_id": "cooking_basket"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:skillet",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 3
+      },
+      "numismatics_cost": 192,
+      "trade_id": "cooking_skillet"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:cooking_pot",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_cooking_pot"
+    },
+    {
+      "offer": {
+        "item": "farmersdelight:stove",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_stove"
+    },
+    {
+      "offer": {
+        "item": "candlelight:cobblestone_kitchen_sink",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:cog",
+        "count": 4
+      },
+      "numismatics_cost": 256,
+      "trade_id": "cooking_kitchen_sink"
+    },
+    {
+      "offer": {
+        "item": "candlelight:cooking_pot",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 2
+      },
+      "numismatics_cost": 1024,
+      "trade_id": "cooking_master_cooking_pot"
+    },
+    {
+      "offer": {
+        "item": "brewery:wooden_brewingstation",
+        "count": 1
+      },
+      "request": {
+        "item": "numismatics:crown",
+        "count": 4
+      },
+      "numismatics_cost": 2048,
+      "trade_id": "cooking_brew_oven"
     }
   ]
 }
